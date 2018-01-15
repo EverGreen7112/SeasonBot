@@ -35,6 +35,7 @@ public class OI {
 	public double GetXAxis() {
 		return JS.getRawAxis(0);
 	}
+	
 	//returns joystick Y axis
 	public double GetYAxis() {
 		return JS.getRawAxis(1);
