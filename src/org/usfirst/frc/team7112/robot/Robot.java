@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
+import org.usfirst.frc.team7112.robot.subsystems.Claw;
 import org.usfirst.frc.team7112.robot.OI;
 
 /**
@@ -33,6 +34,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		OI.init();
 		Chassis.init();
+		Claw.init();
 	}
 	
 	/**
@@ -75,7 +77,6 @@ public class Robot extends IterativeRobot {
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
-		Chassis.init();
 	}
 
 	/**

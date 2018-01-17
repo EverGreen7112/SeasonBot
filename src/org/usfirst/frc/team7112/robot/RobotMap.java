@@ -22,7 +22,7 @@ public class RobotMap {
 	
 	//Pliers Talon
 	public static final int
-			Pliers_Talon = 2;
+			Claw_Talon = 2;
 	
 	//Pliers MicroSwitches
 	public static final int 

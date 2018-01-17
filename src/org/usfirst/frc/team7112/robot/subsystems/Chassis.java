@@ -1,13 +1,11 @@
 package org.usfirst.frc.team7112.robot.subsystems;
 
 import org.usfirst.frc.team7112.robot.commands.ArcadeDrive;
-import edu.wpi.first.wpilibj.VictorSP;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_Left;
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_Right;
