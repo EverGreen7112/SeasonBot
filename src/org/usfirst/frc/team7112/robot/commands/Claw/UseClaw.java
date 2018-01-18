@@ -1,30 +1,26 @@
-package org.usfirst.frc.team7112.robot.commands;
+package org.usfirst.frc.team7112.robot.commands.Claw;
 
-import org.usfirst.frc.team7112.robot.OI;
-import org.usfirst.frc.team7112.robot.subsystems.Chassis;
+import org.usfirst.frc.team7112.robot.subsystems.Claw;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ArcadeDrive extends Command {
+public class UseClaw extends Command {
 
-    public ArcadeDrive() {
+    public UseClaw() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Chassis.getInstance());
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Chassis.getInstance().arcadeDrive(OI.getInstance().GetYAxis()*Chassis.getInstance().getDriveMultiplier(), OI.getInstance().GetXAxis()*Chassis.getInstance().getDriveMultiplier());
-    	
+    	Claw.getInstance().usePliers();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -39,5 +35,6 @@ public class ArcadeDrive extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

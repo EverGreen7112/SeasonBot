@@ -1,4 +1,4 @@
-package org.usfirst.frc.team7112.robot.commands;
+package org.usfirst.frc.team7112.robot.commands.Claw;
 
 import org.usfirst.frc.team7112.robot.subsystems.Claw;
 

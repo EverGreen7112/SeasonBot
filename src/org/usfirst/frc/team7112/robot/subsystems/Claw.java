@@ -2,9 +2,10 @@ package org.usfirst.frc.team7112.robot.subsystems;
 
 import static org.usfirst.frc.team7112.robot.RobotMap.Claw_Talon;
 import org.usfirst.frc.team7112.robot.OI;
-import org.usfirst.frc.team7112.robot.commands.CloseClaw;
-import org.usfirst.frc.team7112.robot.commands.OpenClaw;
-import org.usfirst.frc.team7112.robot.commands.UsePliers;
+import org.usfirst.frc.team7112.robot.commands.Claw.CloseClaw;
+import org.usfirst.frc.team7112.robot.commands.Claw.OpenClaw;
+import org.usfirst.frc.team7112.robot.commands.Claw.StopClaw;
+import org.usfirst.frc.team7112.robot.commands.Claw.UseClaw;
 
 import static org.usfirst.frc.team7112.robot.RobotMap.Pliers_MicroSwitch_In;
 import static org.usfirst.frc.team7112.robot.RobotMap.Pliers_MicroSwitch_Out;
@@ -38,10 +39,16 @@ public class Claw extends Subsystem {
     public void usePliers(){
     	OI.getInstance().GetBButton().whenPressed(new OpenClaw());
     	OI.getInstance().GetXButton().whenPressed(new CloseClaw());
+    	OI.getInstance().GetXButton().whenReleased(new StopClaw());
+    	OI.getInstance().GetBButton().whenReleased(new StopClaw());
     }
   
     public void setMotorPower(double Power) {
     	m_motor.set(Power);
+    }
+    
+    public void stopMotor(){
+    	m_motor.stopMotor();
     }
 
     //returns true is the InSwitch is pressed
@@ -62,7 +69,7 @@ public class Claw extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new UsePliers());
+    	setDefaultCommand(new UseClaw());
     }
 }
 
