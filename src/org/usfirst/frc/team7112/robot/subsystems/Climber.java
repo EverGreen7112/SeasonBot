@@ -1,14 +1,18 @@
 package org.usfirst.frc.team7112.robot.subsystems;
 
 import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Tape_Talon;
+import org.usfirst.frc.team7112.robot.OI;
+import org.usfirst.frc.team7112.robot.commands.StopTape;
+import org.usfirst.frc.team7112.robot.commands.TapeClose;
+import org.usfirst.frc.team7112.robot.commands.TapeOpen;
 import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Rope_Talon;
-
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
+
 public class Climber extends Subsystem {
 	
 	
@@ -41,7 +45,12 @@ public class Climber extends Subsystem {
 	    
 	    public static final void init() {
 			instance = new Climber();
-		}
+			//binds the X key to open the claw and the B key to close the claw
+	    	OI.getInstance().Get_LB_Button().whenPressed(new TapeOpen());
+	    	OI.getInstance().Get_LB_Button().whenReleased(new StopTape());
+	    	OI.getInstance().Get_RB_Button().whenPressed(new TapeClose());
+	    	OI.getInstance().Get_RB_Button().whenActive(new StopTape());
+		}	
 	    
 	 //returns the instance of the climber
 		public static final Climber getInstance() {
@@ -53,5 +62,7 @@ public class Climber extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+
+	
 }
 

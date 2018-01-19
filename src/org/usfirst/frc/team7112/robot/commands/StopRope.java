@@ -1,30 +1,23 @@
-package org.usfirst.frc.team7112.robot.commands.Chassis;
-
-import org.usfirst.frc.team7112.robot.OI;
-import org.usfirst.frc.team7112.robot.subsystems.Chassis;
+package org.usfirst.frc.team7112.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ArcadeDrive extends Command {
+public class StopRope extends Command {
 
-    public ArcadeDrive() {
+    public StopRope() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Chassis.getInstance());
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Chassis.getInstance().arcadeDrive(OI.getInstance().Get_Y_Axis()*Chassis.getInstance().getDriveMultiplier(), OI.getInstance().Get_X_Axis()*Chassis.getInstance().getDriveMultiplier());
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
