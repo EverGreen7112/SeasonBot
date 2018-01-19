@@ -15,17 +15,29 @@ package org.usfirst.frc.team7112.robot;
  */
 public class RobotMap {
 	 
-	//Chassis Talons
+	//---------Chassis---------
+	
+	//Talons
 	public static final int 
 			Chassis_Talon_Left = 0,
 			Chassis_Talon_Right = 1;
 	
-	//Pliers Talon
+	
+	//---------Claw---------
+	
+	//Talon
 	public static final int
 			Claw_Talon = 2;
 	
-	//Pliers MicroSwitches
+	//MicroSwitches
 	public static final int 
 			Pliers_MicroSwitch_In = 0,
 			Pliers_MicroSwitch_Out = 1;
+	
+	//---------Climber---------
+	
+	//Talons
+	public static final int
+			Climber_Rope_Talon = 2,
+			Climber_Tape_Talon = 3;
 }
