@@ -22,17 +22,27 @@ public class Climber extends Subsystem {
 		}
 		
 		//sets the power to the motor
-	    public void setMotorPower(double Power) {
-	    	m_Rope_Motor.set(Power);
-	    	m_Tape_Motor.set(Power);
+	    public void setRopeMotorPower(double power) {
+	    	m_Rope_Motor.set(power);
 	    }
 	    
-	    //stops the motor
-	    public void stopMotor(){
+	    public void setTapeMotorPower(double power){
+	    	m_Tape_Motor.set(power);
+	    }
+	    
+	    //stops the rope motor
+	    public void stopRopeMotor(){
 	    	m_Rope_Motor.stopMotor();
+	    }
+	    
+	    public void stopTapeMotor(){
 	    	m_Tape_Motor.stopMotor();
 	    }
-		
+	    
+	    public static final void init() {
+			instance = new Climber();
+		}
+	    
 	 //returns the instance of the climber
 		public static final Climber getInstance() {
 			return instance;

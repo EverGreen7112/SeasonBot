@@ -29,9 +29,7 @@ public class Claw extends Subsystem {
     	m_switchOut= new DigitalInput(Pliers_MicroSwitch_Out);
     }
     
-    /*
-     * Initiates the Pliers.
-     */
+    //Initiates the Pliers
     public static final void init() {
 		instance = new Claw();
 		//binds the X key to open the claw and the B key to close the claw

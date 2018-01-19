@@ -18,6 +18,8 @@ public class OI {
 	public Joystick JS = new Joystick(0);
 	Button button_X = new JoystickButton(JS, 2);
 	Button button_B = new JoystickButton(JS, 1);
+	Button button_LB = new JoystickButton(JS, 5);
+	Button button_RB = new JoystickButton(JS, 6);
 	
 	//creates an instance of OI
 	public static final void init() {
@@ -29,7 +31,13 @@ public class OI {
 		return instance;
 	}
 	
+	public Button GetLBButton(){
+		return button_LB;
+	}
 	
+	public Button GetRBButton(){
+		return button_RB;
+	}
 	
 	//returns joystick X axis
 	public double GetXAxis() {
