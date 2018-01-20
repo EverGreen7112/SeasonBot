@@ -1,14 +1,14 @@
 package org.usfirst.frc.team7112.robot.subsystems;
 
+import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Rope_Talon;
 import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Tape_Talon;
+
 import org.usfirst.frc.team7112.robot.OI;
 import org.usfirst.frc.team7112.robot.commands.Climber.StopTape;
 import org.usfirst.frc.team7112.robot.commands.Climber.TapeClose;
 import org.usfirst.frc.team7112.robot.commands.Climber.TapeOpen;
 
-import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Rope_Talon;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
