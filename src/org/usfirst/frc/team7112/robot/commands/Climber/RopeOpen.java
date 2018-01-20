@@ -1,15 +1,16 @@
-package org.usfirst.frc.team7112.robot.commands;
+package org.usfirst.frc.team7112.robot.commands.Climber;
+
+import org.usfirst.frc.team7112.robot.subsystems.Climber;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class StopRope extends Command {
+public class RopeOpen extends Command {
 
-    public StopRope() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public RopeOpen() {
+    	requires(Climber.getInstance());
     }
 
     // Called just before this Command runs the first time
@@ -18,6 +19,7 @@ public class StopRope extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Climber.getInstance().setTapeMotorPower(-0.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -27,10 +29,12 @@ public class StopRope extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Climber.getInstance().stopRopeMotor();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

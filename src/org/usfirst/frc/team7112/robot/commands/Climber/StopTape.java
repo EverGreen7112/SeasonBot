@@ -1,4 +1,4 @@
-package org.usfirst.frc.team7112.robot.commands;
+package org.usfirst.frc.team7112.robot.commands.Climber;
 import org.usfirst.frc.team7112.robot.subsystems.Climber;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -9,7 +9,7 @@ public class StopTape extends Command {
 
     public StopTape() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Climber.getInstance());
     }
 
     // Called just before this Command runs the first time

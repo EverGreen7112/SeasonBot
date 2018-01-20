@@ -1,4 +1,4 @@
-package org.usfirst.frc.team7112.robot.commands;
+package org.usfirst.frc.team7112.robot.commands.Climber;
 
 import org.usfirst.frc.team7112.robot.subsystems.Climber;
 
@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class TapeOpen extends Command {
+public class TapeClose extends Command {
 
-    public TapeOpen() {
+    public TapeClose() {
     	requires(Climber.getInstance());
     }
 
@@ -19,7 +19,7 @@ public class TapeOpen extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Climber.getInstance().setTapeMotorPower(0.5);
+    	Climber.getInstance().setTapeMotorPower(-0.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
