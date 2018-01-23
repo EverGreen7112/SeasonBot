@@ -8,12 +8,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CloseClaw extends Command {
+public class UseClaw extends Command {
 
-    public CloseClaw() {
+    public UseClaw() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Claw.getInstance());
+        requires(Claw.getInstance());
     }
 
     // Called just before this Command runs the first time
@@ -22,24 +21,23 @@ public class CloseClaw extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Claw.getInstance().switchPressed_Close())
+    	if(!Claw.getInstance().switchPressed_Open())
+    		Claw.getInstance().setMotorPower(OI.getInstance().get_RT_Axis()*0.4);
+    	if(!Claw.getInstance().switchPressed_Close())
     		Claw.getInstance().setMotorPower(OI.getInstance().get_LT_Axis()*0.4);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Claw.getInstance().switchPressed_Close()) return true;
-        else return false;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Claw.getInstance().setMotorPower(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

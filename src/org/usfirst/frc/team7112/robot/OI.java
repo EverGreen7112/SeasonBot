@@ -16,8 +16,8 @@ public class OI {
 
 	// joysticks
 	public Joystick JS = new Joystick(0);
-	Button button_X = new JoystickButton(JS, 2); //
-	Button button_B = new JoystickButton(JS, 1); //
+	Button button_X = new JoystickButton(JS, 3); //
+	Button button_B = new JoystickButton(JS, 2); //
 	Button button_LB = new JoystickButton(JS, 5); //
 	Button button_RB = new JoystickButton(JS, 6); //
 	
@@ -47,6 +47,14 @@ public class OI {
 	//returns joystick Y axis
 	public double Get_Y_Axis() {
 		return JS.getRawAxis(1);
+	}
+	
+	public double get_LT_Axis(){
+		return JS.getRawAxis(2);
+	}
+	
+	public double get_RT_Axis(){
+		return JS.getRawAxis(3);
 	}
 
 	public Button Get_X_Button(){

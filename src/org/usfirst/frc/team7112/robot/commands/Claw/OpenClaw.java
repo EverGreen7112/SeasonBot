@@ -1,5 +1,6 @@
 package org.usfirst.frc.team7112.robot.commands.Claw;
 
+import org.usfirst.frc.team7112.robot.OI;
 import org.usfirst.frc.team7112.robot.subsystems.Claw;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -22,7 +23,7 @@ public class OpenClaw extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(!Claw.getInstance().switchPressed_Open())
-    		Claw.getInstance().setMotorPower(-0.225);
+    		Claw.getInstance().setMotorPower(OI.getInstance().get_RT_Axis()*0.4);
     }
 
     // Make this return true when this Command no longer needs to run execute()

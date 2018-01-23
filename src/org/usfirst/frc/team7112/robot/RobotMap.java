@@ -31,8 +31,8 @@ public class RobotMap {
 	
 	//MicroSwitches
 	public static final int 
-			Pliers_MicroSwitch_In = 0,
-			Pliers_MicroSwitch_Out = 1;
+			Claw_MicroSwitch_In = 0,
+			Claw_MicroSwitch_Out = 1;
 	
 	//---------Climber---------
 	
@@ -40,4 +40,11 @@ public class RobotMap {
 	public static final int
 			Climber_Rope_Talon = 2,
 			Climber_Tape_Talon = 3;
+	
+	//---------Angle---------
+	public static final int
+			Angle_Talon = 4;
+	
+	public static final int
+			Angle_MicroSwitch = 2;
 }
