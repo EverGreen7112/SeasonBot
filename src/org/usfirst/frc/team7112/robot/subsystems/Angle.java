@@ -19,22 +19,26 @@ public class Angle extends Subsystem {
 	private Encoder m_encoder;
 	private SpeedController m_motor;
 	private DigitalInput m_microSwitch;
+	private double m_slowModifier = 0.3;
 	
 	private Angle(){
 		m_motor = new WPI_TalonSRX(Angle_Talon);
 		m_microSwitch = new DigitalInput(Angle_MicroSwitch);
 	}
 	
-	public static final void init() {
-		instance = new Angle();
+	//returns the state of the microSwitch
+	public boolean isPressed(){
+		return m_microSwitch.get();
 	}
 	
-	
-
 	//sets the power to the motor
     public void setMotorPower(double Power) {
     	m_motor.set(Power);
     }
+	
+	public static final void init() {
+		instance = new Angle();
+	}
 	
 	public static final Angle getInstance() {
 		return instance;
