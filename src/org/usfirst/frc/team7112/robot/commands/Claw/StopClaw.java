@@ -1,7 +1,5 @@
 package org.usfirst.frc.team7112.robot.commands.Claw;
-
 import org.usfirst.frc.team7112.robot.subsystems.Claw;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -12,6 +10,7 @@ public class StopClaw extends Command {
     public StopClaw() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        requires(Claw.getInstance());
     }
 
     // Called just before this Command runs the first time

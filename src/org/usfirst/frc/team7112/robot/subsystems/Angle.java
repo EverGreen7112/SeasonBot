@@ -1,6 +1,9 @@
 package org.usfirst.frc.team7112.robot.subsystems;
 
 import static org.usfirst.frc.team7112.robot.RobotMap.Angle_Talon;
+
+import org.usfirst.frc.team7112.robot.OI;
+
 import static org.usfirst.frc.team7112.robot.RobotMap.Angle_MicroSwitch;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -27,13 +30,21 @@ public class Angle extends Subsystem {
 	}
 	
 	//returns the state of the microSwitch
-	public boolean isPressed(){
+	public boolean isNotPressed(){
 		return m_microSwitch.get();
 	}
 	
 	//sets the power to the motor
     public void setMotorPower(double Power) {
     	m_motor.set(Power);
+    }
+    
+    public double getSlow(){
+    	return m_slowModifier;
+    }
+    
+    public Encoder getEncoder(){
+    	return m_encoder;
     }
 	
 	public static final void init() {
@@ -48,5 +59,17 @@ public class Angle extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+
+	public void stopMotor() {
+		m_motor.stopMotor();
+	}
+
+	public boolean switchNotPressed_Open() {
+		return OI.getInstance().Get_LB_Button().get();
+	}
+
+	public boolean switchNotPressed_Close() {
+		return OI.getInstance().Get_RB_Button().get();
+	}
 }
 
