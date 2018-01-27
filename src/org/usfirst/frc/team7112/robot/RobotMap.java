@@ -22,6 +22,13 @@ public class RobotMap {
 			Chassis_Talon_Left = 0,
 			Chassis_Talon_Right = 1;
 	
+	//Encoders
+	public static final int
+			Chassis_Encoder_Left_A = 3,
+			Chassis_Encoder_Left_B = 4,
+			Chassis_Encoder_Right_A = 5,
+			Chassis_Encoder_Right_B = 6;
+	
 	
 	//---------Claw---------
 	
