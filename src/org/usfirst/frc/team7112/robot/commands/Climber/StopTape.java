@@ -18,7 +18,7 @@ public class StopTape extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Climber.getInstance().stopTapeMotor();
+    	Climber.getInstance().stopTapeMotors();
     }
 
     // Make this return true when this Command no longer needs to run execute()

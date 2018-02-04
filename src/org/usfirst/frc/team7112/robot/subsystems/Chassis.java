@@ -44,12 +44,15 @@ public class Chassis extends PIDSubsystem {
 		m_encRight = new Encoder(Chassis_Encoder_Right_A, Chassis_Encoder_Right_B);
 		m_encLeft.setDistancePerPulse(0); //temp
 		m_encRight.setDistancePerPulse(0); //temp
+		m_encLeft.reset();
+		m_encRight.reset();
 		//gyro
 		m_gyro = new AnalogGyro(0); // temp
 		m_Talon_Left = new WPI_TalonSRX(Chassis_Talon_Left);
 		m_Talon_Right = new WPI_TalonSRX(Chassis_Talon_Right);
 		m_Driver = new DifferentialDrive(m_Talon_Left, m_Talon_Right);
 		driveMultiplier = 0.5;
+		//
 		}
 	
 	public double getDriveMultiplier() {

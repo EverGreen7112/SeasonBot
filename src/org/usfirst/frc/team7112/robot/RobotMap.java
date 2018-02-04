@@ -49,9 +49,17 @@ public class RobotMap {
 			Climber_Tape_Talon = 3;
 	
 	//---------Angle---------
+	
+	//Talon
 	public static final int
 			Angle_Talon = 4;
 	
+	//MicroSwitch
 	public static final int
 			Angle_MicroSwitch = 2;
+	
+	//Encoder
+	public static final int
+			Angle_Encoder_A = 7,
+			Angle_Encoder_B = 8;
 }

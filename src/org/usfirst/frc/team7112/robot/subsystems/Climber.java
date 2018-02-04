@@ -7,6 +7,7 @@ import org.usfirst.frc.team7112.robot.OI;
 import org.usfirst.frc.team7112.robot.commands.Climber.StopTape;
 import org.usfirst.frc.team7112.robot.commands.Climber.TapeClose;
 import org.usfirst.frc.team7112.robot.commands.Climber.TapeOpen;
+import org.usfirst.frc.team7112.robot.commands.Climber.UseRope;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -22,30 +23,38 @@ public class Climber extends Subsystem {
 		private static Climber instance;
 		private SpeedController m_Tape_Motor;
 		private SpeedController m_Rope_Motor;
+		private double ropePowerModifier, tapePowerModifier;
 	
 		private Climber(){
 			m_Rope_Motor = new WPI_TalonSRX(Climber_Rope_Talon);
 			m_Tape_Motor = new WPI_TalonSRX(Climber_Tape_Talon);
+			ropePowerModifier = 0.4; tapePowerModifier = 0.4;
 		}
 		
-		//sets the power to the motor
+		//sets the power to the rope motor
 	    public void setRopeMotorPower(double power) {
 	    	m_Rope_Motor.set(power);
 	    }
 	    
-	    public void setTapeMotorPower(double power){
+	    //sets the power to the tape motors
+	    public void setTapeMotorsPower(double power){
 	    	m_Tape_Motor.set(power);
 	    }
 	    
-	    //stops the rope motor
-	    public void stopRopeMotor(){
-	    	m_Rope_Motor.stopMotor();
-	    }
-	    
-	    public void stopTapeMotor(){
+	    //stops the tape motors
+	    public void stopTapeMotors(){
 	    	m_Tape_Motor.stopMotor();
 	    }
 	    
+	    public double getRopePowerModifier(){
+	    	return ropePowerModifier;
+	    }
+	    
+	    public double getTopePowerModifier(){
+	    	return tapePowerModifier;
+	    }
+	    
+	    //binds the keys for the tape and rope controls. LB open tape, RB close tape
 	    private static void bindKeys(){
 	    	OI.getInstance().Get_LB_Button().whenPressed(new TapeOpen());
 	    	OI.getInstance().Get_LB_Button().whenReleased(new StopTape());
@@ -65,8 +74,7 @@ public class Climber extends Subsystem {
 	
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new UseRope());
     }
 
 	

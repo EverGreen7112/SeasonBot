@@ -4,10 +4,7 @@ import static org.usfirst.frc.team7112.robot.RobotMap.Claw_MicroSwitch_In;
 import static org.usfirst.frc.team7112.robot.RobotMap.Claw_MicroSwitch_Out;
 import static org.usfirst.frc.team7112.robot.RobotMap.Claw_Talon;
 
-import org.usfirst.frc.team7112.robot.OI;
-import org.usfirst.frc.team7112.robot.commands.Claw.CloseClaw;
-import org.usfirst.frc.team7112.robot.commands.Claw.OpenClaw;
-import org.usfirst.frc.team7112.robot.commands.Claw.StopClaw;
+
 import org.usfirst.frc.team7112.robot.commands.Claw.UseClaw;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
