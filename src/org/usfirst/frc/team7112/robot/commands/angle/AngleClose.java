@@ -23,7 +23,8 @@ public class AngleClose extends Command {
     protected void execute() {
     	if(Angle.getInstance().isPressed() && Angle.getInstance().getCurrentAngle()!=0)
     		Angle.getInstance().reset();
-    	if(Angle.getInstance().isPressed()){
+    	//need to add the first time going down slowing mechanism
+    	if(!Angle.getInstance().isPressed()){
     		if(Angle.getInstance().getCurrentAngle() == Angle.getInstance().getSlowingAngle())
     			Angle.getInstance().setMotorPower(Angle.getInstance().getSlowingAngle());
     		else
@@ -33,7 +34,7 @@ public class AngleClose extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Angle.getInstance().isPressed();
     }
 
     // Called once after isFinished returns true

@@ -25,6 +25,7 @@ public class Angle extends Subsystem {
 	private static double kSlowModifier = 0.3; //temp
 	private static int kDistancePerPulse = 0; //temp
 	private static double kSlowingAngle = 30; //temp
+	private static double kGoalAngle = 0; //temp
 	
 	private Angle(){
 		//Talon
@@ -94,6 +95,10 @@ public class Angle extends Subsystem {
 
 	public double getSpeedModifier() {
 		return kSpeedModifier;
+	}
+
+	public static double getkGoalAngle() {
+		return kGoalAngle;
 	}
 }
 
