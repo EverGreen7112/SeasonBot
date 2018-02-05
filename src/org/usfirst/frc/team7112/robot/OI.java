@@ -16,10 +16,10 @@ public class OI {
 
 	// joysticks
 	public Joystick JS = new Joystick(0);
-	Button button_X = new JoystickButton(JS, 3); //
-	Button button_B = new JoystickButton(JS, 2); //
-	Button button_LB = new JoystickButton(JS, 5); //
-	Button button_RB = new JoystickButton(JS, 6); //
+	Button buttonX = new JoystickButton(JS, 3); //
+	Button buttonB = new JoystickButton(JS, 2); //
+	Button buttonLB = new JoystickButton(JS, 5); //
+	Button buttonRB = new JoystickButton(JS, 6); //
 	
 	//creates an instance of OI
 	public static final void init() {
@@ -32,11 +32,11 @@ public class OI {
 	}
 	
 	public Button Get_LB_Button(){
-		return button_LB;
+		return buttonLB;
 	}
 	
 	public Button Get_RB_Button(){
-		return button_RB;
+		return buttonRB;
 	}
 	
 	//returns joystick X axis
@@ -63,10 +63,10 @@ public class OI {
 	}
 	
 	public Button Get_X_Button(){
-		return button_X;
+		return buttonX;
 	}
 	
 	public Button Get_B_Button(){
-		return button_B;
+		return buttonB;
 	}
 }
