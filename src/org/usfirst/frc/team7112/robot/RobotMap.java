@@ -17,7 +17,11 @@ public class RobotMap {
 	 
 	//---------Chassis---------
 	
-	//Talons
+	/**
+	 * The chassis ports.
+	 * 
+	 * @see {@link org.usfirst.frc.team7112.robot.subsystems.Chassis Chassis}
+	 */
 	public static final int 
 			Chassis_Talon_Left = 0,
 			Chassis_Talon_Right = 1;

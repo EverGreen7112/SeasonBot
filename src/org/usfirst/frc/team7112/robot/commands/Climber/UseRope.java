@@ -1,4 +1,4 @@
-package org.usfirst.frc.team7112.robot.commands.Climber;
+package org.usfirst.frc.team7112.robot.commands.climber;
 
 import org.usfirst.frc.team7112.robot.OI;
 import org.usfirst.frc.team7112.robot.subsystems.Climber;
@@ -27,7 +27,7 @@ public class UseRope extends Command {
     		Climber.getInstance().setRopeMotorPower(-Climber.getInstance().getRopePowerModifier());
     	}
     	else if(OI.getInstance().GetPOV() == -1){
-    		Climber.getInstance().stopRopeMotor();	
+    		Climber.getInstance().setRopeMotorPower(0);	
     	}
     }
 

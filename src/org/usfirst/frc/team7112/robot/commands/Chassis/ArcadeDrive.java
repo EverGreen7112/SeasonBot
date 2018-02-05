@@ -1,4 +1,4 @@
-package org.usfirst.frc.team7112.robot.commands.Chassis;
+package org.usfirst.frc.team7112.robot.commands.chassis;
 
 import org.usfirst.frc.team7112.robot.OI;
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
@@ -23,7 +23,7 @@ public class ArcadeDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Chassis.getInstance().arcadeDrive(OI.getInstance().Get_Y_Axis()*Chassis.getInstance().getDriveMultiplier(), OI.getInstance().Get_X_Axis()*Chassis.getInstance().getDriveMultiplier());
+    	Chassis.getInstance().arcadeDrive(OI.getInstance().Get_Y_Axis() * Chassis.getInstance().getDriveMultiplier(), OI.getInstance().Get_X_Axis() * Chassis.getInstance().getDriveMultiplier());
     	
     }
 

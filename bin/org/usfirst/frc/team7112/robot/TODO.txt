@@ -1,0 +1,69 @@
+*XXX = done
+
+11) make universals conventions - put it on the fucking wall
+
+1) rename packages to smallcase XXX
+6) put all distance_per_pulse in static final vars
+10) remove magic numbers
+8) put all keybinds in one function inside OI.java
+7) put field properties in FieldMap (distance between shit)
+5) refactor all m_Name
+3) new and informative names for classes
+
+4) redo subsystems to delete PIDSucsystems
+
+2) new Javadoc
+
+12) create an alternative joystick class with different presents.
+
+9) put the drive multiplier and similar stuff in SmartDashboard
+
+13) make a REAL todo list
+
+14) connect a second monitor
+
+15) connect to the fucking internet 
+
+
+///////////////////////////////////////////////
+-------------------------------------------~----
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+before robot:
+	make FULL abstract robot
+	finish this TODO list
+
+	make a nice and simple Interface for different autonomAuse on different game specific messages.
+
+	learn about ShuffleBoard
+	
+	make a simple yet effective autonomouse chooser for the competition.
+	
+	make a real nice לוח שעם that will give the following info:
+		who needs to work
+		when he needs to work
+		on what
+		deadline
+	
+	get a second computer
+	
+after robot:
+	fix the abstract robot - 8\7 hours a night
+	party
+	do pid
+	start doing competition runs (fullround tests)
+	- regional A
+	fix fix pid pid pid
+	- regional B
+	pidpidpidpidpidpidpidpid
+	- Israel finals
+	
+	- huston??
+	
+Idan:
+	learn how to teach kids
+	get in contact with the mentors:
+		pid
+		electronics
+	
+	
+	

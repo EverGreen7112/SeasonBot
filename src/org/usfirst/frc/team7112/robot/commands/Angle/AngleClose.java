@@ -1,4 +1,4 @@
-package org.usfirst.frc.team7112.robot.commands.Angle;
+package org.usfirst.frc.team7112.robot.commands.angle;
 
 import org.usfirst.frc.team7112.robot.subsystems.Angle;
 
@@ -21,6 +21,14 @@ public class AngleClose extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if(Angle.getInstance().isPressed() && Angle.getInstance().getCurrentAngle()!=0)
+    		Angle.getInstance().reset();
+    	if(Angle.getInstance().isPressed()){
+    		if(Angle.getInstance().getCurrentAngle() == Angle.getInstance().getSlowingAngle())
+    			Angle.getInstance().setMotorPower(Angle.getInstance().getSlowingAngle());
+    		else
+    			Angle.getInstance().setMotorPower(Angle.getInstance().getSpeedModifier());
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -1,4 +1,4 @@
-package org.usfirst.frc.team7112.robot.commands.Climber;
+package org.usfirst.frc.team7112.robot.commands.climber;
 
 import org.usfirst.frc.team7112.robot.subsystems.Climber;
 

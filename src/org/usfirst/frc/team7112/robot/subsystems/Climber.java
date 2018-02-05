@@ -4,10 +4,10 @@ import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Rope_Talon;
 import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Tape_Talon;
 
 import org.usfirst.frc.team7112.robot.OI;
-import org.usfirst.frc.team7112.robot.commands.Climber.StopTape;
-import org.usfirst.frc.team7112.robot.commands.Climber.TapeClose;
-import org.usfirst.frc.team7112.robot.commands.Climber.TapeOpen;
-import org.usfirst.frc.team7112.robot.commands.Climber.UseRope;
+import org.usfirst.frc.team7112.robot.commands.climber.StopTape;
+import org.usfirst.frc.team7112.robot.commands.climber.TapeClose;
+import org.usfirst.frc.team7112.robot.commands.climber.TapeOpen;
+import org.usfirst.frc.team7112.robot.commands.climber.UseRope;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -21,29 +21,29 @@ public class Climber extends Subsystem {
 	
 	
 		private static Climber instance;
-		private SpeedController m_Tape_Motor;
-		private SpeedController m_Rope_Motor;
+		private SpeedController Tape_Motor;
+		private SpeedController Rope_Motor;
 		private double ropePowerModifier, tapePowerModifier;
 	
 		private Climber(){
-			m_Rope_Motor = new WPI_TalonSRX(Climber_Rope_Talon);
-			m_Tape_Motor = new WPI_TalonSRX(Climber_Tape_Talon);
+			Rope_Motor = new WPI_TalonSRX(Climber_Rope_Talon);
+			Tape_Motor = new WPI_TalonSRX(Climber_Tape_Talon);
 			ropePowerModifier = 0.4; tapePowerModifier = 0.4;
 		}
 		
 		//sets the power to the rope motor
 	    public void setRopeMotorPower(double power) {
-	    	m_Rope_Motor.set(power);
+	    	Rope_Motor.set(power);
 	    }
 	    
 	    //sets the power to the tape motors
 	    public void setTapeMotorsPower(double power){
-	    	m_Tape_Motor.set(power);
+	    	Tape_Motor.set(power);
 	    }
 	    
 	    //stops the tape motors
 	    public void stopTapeMotors(){
-	    	m_Tape_Motor.stopMotor();
+	    	Tape_Motor.stopMotor();
 	    }
 	    
 	    public double getRopePowerModifier(){
