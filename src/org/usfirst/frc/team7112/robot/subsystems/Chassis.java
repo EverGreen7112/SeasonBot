@@ -35,14 +35,16 @@ public class Chassis extends Subsystem {
 	private AnalogGyro gyro;
 	
 	private DifferentialDrive Driver;
+	
 	private static double driveMultiplier;
+	private static final double kDistancePerPalse = 0; //temp
 
 	private Chassis() {
 		//encoders
 		encLeft = new Encoder(Chassis_Encoder_Left_A, Chassis_Encoder_Left_B);
 		encRight = new Encoder(Chassis_Encoder_Right_A, Chassis_Encoder_Right_B,true);
-		encLeft.setDistancePerPulse(0); //temp
-		encRight.setDistancePerPulse(0); //temp
+		encLeft.setDistancePerPulse(kDistancePerPalse); //temp
+		encRight.setDistancePerPulse(kDistancePerPalse); //temp
 		encLeft.reset();
 		encRight.reset();
 		//gyro
@@ -71,24 +73,42 @@ public class Chassis extends Subsystem {
 		return (encLeft.getRate() + encRight.getRate()) / 2;// maybe + instead of -
 	}
 	
-	public double getSpeedL() {
+	/**
+	 * Returns the current distance that the right side motors traveled via the encoder
+	 * @return The current distance that the right encoder recorded
+	 */
+
+	public double getSpeedR() {
 		return encRight.getRate();
 	}
 	
-	public double getSpeedR() {
+	/**
+	 * Returns the current distance that the left side motors traveled via the encoder
+	 * @return The current distance that the left encoder recorded
+	 */
+	public double getSpeedL() {
 		return encLeft.getRate();
 	}
 	
+	/**
+	 * Returns the angle that the robot is at since the gyro was reset
+	 * @return The angle that the robot is at
+	 */
 	public double getAngle() {
 		return gyro.getAngle();
 	}
 	
-	// reset methods for sensors
+	/**
+	 * Resets the driving encoders
+	 */
 	public void resetEncoders() {
 		encLeft.reset();
 		encRight.reset();
 	}
 	
+	/**
+	 * Resets the gyro
+	 */
 	public void resetGyro() {
 		gyro.reset();
 	}

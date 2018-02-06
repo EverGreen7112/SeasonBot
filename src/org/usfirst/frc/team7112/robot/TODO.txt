@@ -7,10 +7,10 @@
 10) remove magic numbers
 8) put all keybinds in one function inside OI.java
 7) put field properties in FieldMap (distance between shit)
-5) refactor all m_Name
+5) refactor all m_Name XXX
 3) new and informative names for classes
 
-4) redo subsystems to delete PIDSucsystems
+4) redo subsystems to delete PIDSucsystems XXX
 
 2) new Javadoc
 
@@ -18,11 +18,11 @@
 
 9) put the drive multiplier and similar stuff in SmartDashboard
 
-13) make a REAL todo list
+13) make a REAL todo list (IRL)
 
 14) connect a second monitor
 
-15) connect to the fucking internet 
+15) connect to the fucking internet XXX
 
 
 ///////////////////////////////////////////////
