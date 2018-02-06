@@ -46,11 +46,19 @@ public class Climber extends Subsystem {
 	    	Tape_Motor.stopMotor();
 	    }
 	    
+	    /**
+	     * returns the power modifier of the rope motors
+	     * @return the rope power modifier
+	     */
 	    public double getRopePowerModifier(){
 	    	return ropePowerModifier;
 	    }
 	    
-	    public double getTopePowerModifier(){
+	    /**
+	     * returns the power modifier of the tape motors
+	     * @return the tape power modifier
+	     */
+	    public double getTapePowerModifier(){
 	    	return tapePowerModifier;
 	    }
 	    

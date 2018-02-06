@@ -21,11 +21,11 @@ public class Angle extends Subsystem {
 	private Encoder encoder;
 	private SpeedController motor;
 	private DigitalInput microSwitch;
-	private static double kSpeedModifier = 0.5; //temp
-	private static double kSlowModifier = 0.3; //temp
-	private static int kDistancePerPulse = 0; //temp
-	private static double kSlowingAngle = 30; //temp
-	private static double kGoalAngle = 0; //temp
+	private static final double kSpeedModifier = 0.5; //temp
+	private static final double kSlowModifier = 0.3; //temp
+	private static final int kDistancePerPulse = 0; //temp
+	private static final double kSlowingAngle = 30; //temp
+	private static final double kGoalAngle = 0; //temp
 	
 	private Angle(){
 		//Talon
@@ -38,7 +38,10 @@ public class Angle extends Subsystem {
 		reset();
 	}
 	
-	//returns the state of the microSwitch
+	/**
+	 * Returns the state of the micro switch
+	 * @return True if the switche is pressed, otherwise will return false
+	 */
 	public boolean isPressed(){
 		return microSwitch.get();
 	}
@@ -80,6 +83,23 @@ public class Angle extends Subsystem {
     public double getSlowingAngle(){
     	return kSlowingAngle;
     }
+    
+    /**
+     * returns the speed modifier
+     * @return the speed modifier
+     */
+	public double getSpeedModifier() {
+		return kSpeedModifier;
+	}
+
+	/**
+	 * returns the goal angle
+	 * @return the goal angle
+	 */
+	public static double getkGoalAngle() {
+		return kGoalAngle;
+	}
+    
 	public static final void init() {
 		instance = new Angle();
 	}
@@ -93,12 +113,6 @@ public class Angle extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 
-	public double getSpeedModifier() {
-		return kSpeedModifier;
-	}
 
-	public static double getkGoalAngle() {
-		return kGoalAngle;
-	}
 }
 

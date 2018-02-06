@@ -2,7 +2,7 @@ package org.usfirst.frc.team7112.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
@@ -23,27 +23,24 @@ import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Encoder_Right_B;
  * @author Maarahot
  *
  */
-public class Chassis extends PIDSubsystem {
+public class Chassis extends Subsystem {
 
 	private SpeedController Talon_Left;
 	private SpeedController Talon_Right;
 	
 	private static Chassis instance;
-	
-	private static double kP = 0, kI = 0, kD = 0;
-	
+		
 	private Encoder encLeft, encRight;
 	
 	private AnalogGyro gyro;
 	
 	private DifferentialDrive Driver;
-	private double driveMultiplier;
+	private static double driveMultiplier;
 
 	private Chassis() {
-		super("Chassis", kP,kI,kD);
 		//encoders
 		encLeft = new Encoder(Chassis_Encoder_Left_A, Chassis_Encoder_Left_B);
-		encRight = new Encoder(Chassis_Encoder_Right_A, Chassis_Encoder_Right_B);
+		encRight = new Encoder(Chassis_Encoder_Right_A, Chassis_Encoder_Right_B,true);
 		encLeft.setDistancePerPulse(0); //temp
 		encRight.setDistancePerPulse(0); //temp
 		encLeft.reset();
@@ -112,16 +109,6 @@ public class Chassis extends PIDSubsystem {
 	protected void initDefaultCommand() {
 		setDefaultCommand(new ArcadeDrive());
 
-	}
-
-	@Override
-	protected double returnPIDInput() {
-		 return getAngle();
-	}
-
-	@Override
-	protected void usePIDOutput(double output) {
-		
 	}
 
 }
