@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 import org.usfirst.frc.team7112.robot.subsystems.Claw;
 import org.usfirst.frc.team7112.robot.OI;
+import org.usfirst.frc.team7112.robot.commands.auto.TestAuto;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,7 +24,7 @@ public class Robot extends IterativeRobot {
 	
 	public static OI oi;
 	public static Chassis chassis;
-	Command autonomousCommand;
+	Command autonomousCommand = new TestAuto();
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**

@@ -3,8 +3,8 @@
 11) make universals conventions - put it on the fucking wall
 
 1) rename packages to smallcase XXX
-6) put all distance_per_pulse in static final vars
-10) remove magic numbers
+6) put all distance_per_pulse in static final vars XXX
+10) remove magic numbers XXX
 8) put all keybinds in one function inside OI.java
 7) put field properties in FieldMap (distance between shit)
 5) refactor all m_Name XXX
