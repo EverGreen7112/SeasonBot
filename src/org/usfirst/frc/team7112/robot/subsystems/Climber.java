@@ -21,29 +21,29 @@ public class Climber extends Subsystem {
 	
 	
 		private static Climber instance;
-		private SpeedController Tape_Motor;
-		private SpeedController Rope_Motor;
-		private double ropePowerModifier, tapePowerModifier;
+		private SpeedController tapeMotor;
+		private SpeedController ropeMotor;
+		private final double ropePowerModifier = 0.4, tapePowerModifier= 0.4;
 	
 		private Climber(){
-			Rope_Motor = new WPI_TalonSRX(Climber_Rope_Talon);
-			Tape_Motor = new WPI_TalonSRX(Climber_Tape_Talon);
-			ropePowerModifier = 0.4; tapePowerModifier = 0.4;
+			ropeMotor = new WPI_TalonSRX(Climber_Rope_Talon);
+			tapeMotor = new WPI_TalonSRX(Climber_Tape_Talon);
+			ropeMotor.setInverted(true);
 		}
 		
 		//sets the power to the rope motor
 	    public void setRopeMotorPower(double power) {
-	    	Rope_Motor.set(power);
+	    	ropeMotor.set(power);
 	    }
 	    
 	    //sets the power to the tape motors
 	    public void setTapeMotorsPower(double power){
-	    	Tape_Motor.set(power);
+	    	tapeMotor.set(power);
 	    }
 	    
 	    //stops the tape motors
 	    public void stopTapeMotors(){
-	    	Tape_Motor.stopMotor();
+	    	tapeMotor.stopMotor();
 	    }
 	    
 	    /**
