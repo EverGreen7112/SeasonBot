@@ -64,6 +64,10 @@ Idan:
 	get in contact with the mentors:
 		pid
 		electronics
-	
+		
+Joysticks/Controllers:
+	When driving joystick is moved from side to side, possibly make it so that the slow turn doesn't 
+	work as it can accidently be activated.		
+	Make small turn left and small turn right on or off without option in between.
 	
 	
