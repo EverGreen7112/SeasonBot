@@ -38,7 +38,7 @@ public class SmartJoystick {
 	
 	public Joystick getPreset(String preset){
 		return allJoysticks.get(LogitechKeys.valueOf(preset).port);
-	}
+	} 
 	
 	public void switchToPreset(int preset){
 		

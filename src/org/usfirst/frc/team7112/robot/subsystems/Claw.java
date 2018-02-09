@@ -18,6 +18,7 @@ public class Claw extends Subsystem {
     private SpeedController motor;
     private DigitalInput switchIn;
     private DigitalInput switchOut;
+    private static final double speedModifier = 0.4;
     
     
     private Claw(){
@@ -36,7 +37,14 @@ public class Claw extends Subsystem {
     	motor.set(Power);
     }
     
-    //stops the motor
+    /**
+	 * @return the speedmodifier
+	 */
+	public double getSpeedmodifier() {
+		return speedModifier;
+	}
+
+	//stops the motor
     public void stopMotor(){
     	motor.stopMotor();
     }

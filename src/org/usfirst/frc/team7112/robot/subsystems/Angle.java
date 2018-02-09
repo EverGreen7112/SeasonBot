@@ -22,9 +22,7 @@ public class Angle extends Subsystem {
 	private SpeedController motor;
 	private DigitalInput microSwitch;
 	private static final double kSpeedModifier = 0.5; //temp
-	private static final double kSlowModifier = 0.3; //temp
 	private static final int kDistancePerPulse = 0; //temp
-	private static final double kSlowingAngle = 30; //temp
 	private static final double kGoalAngle = 0; //temp
 	
 	private Angle(){
@@ -54,14 +52,6 @@ public class Angle extends Subsystem {
     	motor.set(Power);
     }
     
-	/**
-	 * returns the slow modifier for the Angle
-	 * @return the slow modifier
-	 */
-    public double getSlowModifier(){
-    	return kSlowModifier;
-    }
-    
     /**
      * returns the current angle by the encoder
      * @return the current angle
@@ -76,14 +66,7 @@ public class Angle extends Subsystem {
     public void reset(){
     	encoder.reset();
     }
-    
-    /**
-     * returns the angle that the Angle will start slowing at
-     */
-    public double getSlowingAngle(){
-    	return kSlowingAngle;
-    }
-    
+   
     /**
      * returns the speed modifier
      * @return the speed modifier
@@ -92,6 +75,13 @@ public class Angle extends Subsystem {
 		return kSpeedModifier;
 	}
 
+	/**
+	 * Stops the angle motor
+	 */
+	public void stopMotor(){
+		motor.stopMotor();
+	}
+	
 	/**
 	 * returns the goal angle
 	 * @return the goal angle

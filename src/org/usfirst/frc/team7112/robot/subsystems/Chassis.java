@@ -37,14 +37,14 @@ public class Chassis extends Subsystem {
 	private DifferentialDrive Driver;
 	
 	private static double driveMultiplier;
-	private static final double kDistancePerPalse = 0; //temp
+	private static final double kDistancePerPalse = 0.478/10.71; //temp
 
 	private Chassis() {
 		//encoders
 		encLeft = new Encoder(Chassis_Encoder_Left_A, Chassis_Encoder_Left_B);
 		encRight = new Encoder(Chassis_Encoder_Right_A, Chassis_Encoder_Right_B,true);
-		encLeft.setDistancePerPulse(kDistancePerPalse); //temp
-		encRight.setDistancePerPulse(kDistancePerPalse); //temp
+		encLeft.setDistancePerPulse(kDistancePerPalse);
+		encRight.setDistancePerPulse(kDistancePerPalse);
 		encLeft.reset();
 		encRight.reset();
 		//gyro
