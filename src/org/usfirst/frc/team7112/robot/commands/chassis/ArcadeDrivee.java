@@ -1,6 +1,5 @@
 package org.usfirst.frc.team7112.robot.commands.chassis;
 
-import org.usfirst.frc.team7112.robot.OI;
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,9 +8,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class ArcadeDrive extends Command {
+public class ArcadeDrivee extends Command {
 
-    public ArcadeDrive() {
+    public ArcadeDrivee() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Chassis.getInstance());
@@ -19,21 +18,14 @@ public class ArcadeDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	Chassis.getInstance().arcadeDrive(OI.getInstance().GetYAxis() * Chassis.getInstance().getDriveMultiplier(), OI.getInstance().GetXAxis() * Chassis.getInstance().getDriveMultiplier());
-    	//Chassis.getInstance().arcadeDrive(OI.getInstance().GetYAxis() * Chassis.getInstance().getDriveMultiplier(),0);
-    	SmartDashboard.putNumber("DriverMul", Chassis.getInstance().getDriveMultiplier());    	
-    	SmartDashboard.putNumber("Encoder", Chassis.getInstance().getDistance());
-    	SmartDashboard.putNumber("Y_Axis",OI.getInstance().GetYAxis());
-    	SmartDashboard.putNumber("X_Axis",OI.getInstance().GetXAxis());
-		SmartDashboard.putNumber("encLeft", Chassis.getInstance().getDistanceL());
+    	Chassis.getInstance().test();
+    	//Chassis.getInstance().arcadeDrive(0.8, 0);
+    	SmartDashboard.putNumber("encLeft", Chassis.getInstance().getDistanceL());
 		SmartDashboard.putNumber("encRight", Chassis.getInstance().getDistanceR());
-		
     }
 
     // Make this return true when this Command no longer needs to run execute()

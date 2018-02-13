@@ -2,16 +2,25 @@ package org.usfirst.frc.team7112.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PIDOutput;
+import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.SpeedController;
 
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_Left;
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_Right;
 
+import org.usfirst.frc.team7112.robot.OI;
+import org.usfirst.frc.team7112.robot.commands.auto.TestAuto;
 import org.usfirst.frc.team7112.robot.commands.chassis.ArcadeDrive;
+import org.usfirst.frc.team7112.robot.commands.chassis.ArcadeDrivee;
+import org.usfirst.frc.team7112.robot.commands.chassis.DriveByDistance;
 
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Encoder_Left_A;
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Encoder_Left_B;
@@ -37,24 +46,25 @@ public class Chassis extends Subsystem {
 	private DifferentialDrive Driver;
 	
 	private static double driveMultiplier;
-	private static final double kDistancePerPalse = 0.478/10.71; //temp
+	private static final double kDistancePerPulse = 1;//0.0447; //temp
 
 	private Chassis() {
 		//encoders
-		encLeft = new Encoder(Chassis_Encoder_Left_A, Chassis_Encoder_Left_B);
+		encLeft = new Encoder(Chassis_Encoder_Left_A, Chassis_Encoder_Left_B,true);
 		encRight = new Encoder(Chassis_Encoder_Right_A, Chassis_Encoder_Right_B,true);
-		encLeft.setDistancePerPulse(kDistancePerPalse);
-		encRight.setDistancePerPulse(kDistancePerPalse);
+		encLeft.setDistancePerPulse(kDistancePerPulse);
+		encRight.setDistancePerPulse(kDistancePerPulse);
 		encLeft.reset();
 		encRight.reset();
 		//gyro
 		gyro = new AnalogGyro(0); // temp
+		//Talons
 		Talon_Left = new WPI_TalonSRX(Chassis_Talon_Left);
 		Talon_Right = new WPI_TalonSRX(Chassis_Talon_Right);
+		Talon_Right.setInverted(true);
 		Driver = new DifferentialDrive(Talon_Left, Talon_Right);
 		driveMultiplier = 0.5;
-		//
-		}
+	}
 	
 	public double getDriveMultiplier() {
 		return driveMultiplier;
@@ -73,21 +83,25 @@ public class Chassis extends Subsystem {
 		return (encLeft.getRate() + encRight.getRate()) / 2;// maybe + instead of -
 	}
 	
+	public void test(){
+		Talon_Left.set(0.2);
+		Talon_Right.set(0.2);
+	}
+	
 	/**
 	 * Returns the current distance that the right side motors traveled via the encoder
 	 * @return The current distance that the right encoder recorded
 	 */
-
-	public double getSpeedR() {
-		return encRight.getRate();
+	public double getDistanceR() {
+		return encRight.getDistance();
 	}
 	
 	/**
 	 * Returns the current distance that the left side motors traveled via the encoder
 	 * @return The current distance that the left encoder recorded
 	 */
-	public double getSpeedL() {
-		return encLeft.getRate();
+	public double getDistanceL() {
+		return encLeft.getDistance();
 	}
 	
 	/**
@@ -115,6 +129,8 @@ public class Chassis extends Subsystem {
 
 	public static final void init() {
 		instance = new Chassis();
+    	OI.getInstance().GetBButton().whenPressed(new ArcadeDrivee());
+
 	}
 
 	public static final Chassis getInstance() {
@@ -130,5 +146,6 @@ public class Chassis extends Subsystem {
 		setDefaultCommand(new ArcadeDrive());
 
 	}
+
 
 }

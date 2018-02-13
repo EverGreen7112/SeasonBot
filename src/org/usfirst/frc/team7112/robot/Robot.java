@@ -8,8 +8,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team7112.robot.subsystems.Angle;
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 import org.usfirst.frc.team7112.robot.subsystems.Claw;
+import org.usfirst.frc.team7112.robot.subsystems.Climber;
 import org.usfirst.frc.team7112.robot.OI;
 import org.usfirst.frc.team7112.robot.commands.auto.TestAuto;
 
@@ -24,7 +26,7 @@ public class Robot extends IterativeRobot {
 	
 	public static OI oi;
 	public static Chassis chassis;
-	Command autonomousCommand = new TestAuto();
+	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
@@ -36,6 +38,9 @@ public class Robot extends IterativeRobot {
 		OI.init();
 		Chassis.init();
 		Claw.init();
+		Climber.init();
+		Angle.init();
+		autonomousCommand = new TestAuto();
 	}
 	
 	/**

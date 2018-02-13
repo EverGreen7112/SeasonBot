@@ -23,8 +23,8 @@ public class RobotMap {
 	 * @see {@link org.usfirst.frc.team7112.robot.subsystems.Chassis Chassis}
 	 */
 	public static final int 
-			Chassis_Talon_Left = 0,
-			Chassis_Talon_Right = 1;
+			Chassis_Talon_Left = 4,
+			Chassis_Talon_Right = 5;
 	
 	//Encoders
 	public static final int
@@ -38,7 +38,7 @@ public class RobotMap {
 	
 	//Talon
 	public static final int
-			Claw_Talon = 2;
+			Claw_Talon = 1;
 	
 	//MicroSwitches
 	public static final int 
@@ -56,7 +56,7 @@ public class RobotMap {
 	
 	//Talon
 	public static final int
-			Angle_Talon = 4;
+			Angle_Talon = 0;
 	
 	//MicroSwitch
 	public static final int

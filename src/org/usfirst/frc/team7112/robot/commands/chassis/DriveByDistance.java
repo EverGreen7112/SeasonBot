@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveByDistance extends Command implements PIDOutput , PIDSource {
 
 	private int timesOnTarget=0;
-	private double Kp = 1, Ki = 0, Kd = 0;
+	private double Kp = 1, Ki = 0.3, Kd = 0;
 	private double distance, angle;
 	private PIDController drivePID;
 	private final double P2 = 2.0 / 90.0; //maybe change
@@ -45,9 +45,11 @@ public class DriveByDistance extends Command implements PIDOutput , PIDSource {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.println("test");
     	SmartDashboard.putNumber("Drive PID P", drivePID.getP());
 		SmartDashboard.putNumber("Drive PID I", drivePID.getI());
 		SmartDashboard.putNumber("Drive PID D", drivePID.getD());
+		SmartDashboard.putNumber("Encoder", Chassis.getInstance().getDistance());
     }
 
     // Make this return true when this Command no longer needs to run execute()

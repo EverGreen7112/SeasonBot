@@ -15,15 +15,27 @@ public class OI {
 	private static OI instance;
 
 	// joysticks
-	public Joystick JS = new Joystick(0);
-	Button buttonX = new JoystickButton(JS, 3); //
-	Button buttonB = new JoystickButton(JS, 2); //
+	public Joystick JS = new Joystick(1);
+	Button buttonX = new JoystickButton(JS, 1); //
+	Button buttonB = new JoystickButton(JS, 3); //
 	Button buttonLB = new JoystickButton(JS, 5); //
-	Button buttonRB = new JoystickButton(JS, 6); //
-	public Joystick DrivingJS = new Joystick(1);
+	Button buttonRB = new JoystickButton(JS, 6); //	
+	public Joystick DrivingJS = new Joystick(0);
+	/**
+	 * Boosts the robot's speed
+	 */
 	Button buttonTrigger = new JoystickButton(DrivingJS, 1);
+	/**
+	 * Slows the robot or brakes
+	 */
 	Button buttonThumb = new JoystickButton(DrivingJS, 2);
+	/**
+	 * Closes the claw or nothing for now, POV might be used instead
+	 */
 	Button button5 = new JoystickButton(DrivingJS, 5);
+	/**
+	 * Opens the claw or nothing for now, POV might be used instead
+	 */
 	Button button6 = new JoystickButton(DrivingJS, 6);
 	Button button7 = new JoystickButton(DrivingJS, 7);
 	Button button8 = new JoystickButton(DrivingJS, 8);
@@ -50,75 +62,157 @@ public class OI {
 		return buttonRB;
 	}
 	
-	public Button GetButtonTrigger(){
+	/**
+	 * @return the buttonTrigger
+	 */
+	public Button getButtonTrigger() {
 		return buttonTrigger;
 	}
-	
-	public Button GetButtonThumb(){
+
+	/**
+	 * @return the buttonThumb
+	 */
+	public Button getButtonThumb() {
 		return buttonThumb;
 	}
-	
-	public Button GetButton5(){
+
+	/**
+	 * @return the button5
+	 */
+	public Button getButton5() {
 		return button5;
 	}
 
-	public Button GetButton6(){
+	/**
+	 * @return the button6
+	 */
+	public Button getButton6() {
 		return button6;
 	}
-	
-	public Button GetButton7(){
+
+	/**
+	 * @return the button7
+	 */
+	public Button getButton7() {
 		return button7;
 	}
-	
-	public Button GetButton8(){
+
+	/**
+	 * @return the button8
+	 */
+	public Button getButton8() {
 		return button8;
 	}
-	
-	public Button GetButton9(){
+
+	/**
+	 * @return the button9
+	 */
+	public Button getButton9() {
 		return button9;
 	}
-	
-	public Button GetButton10(){
+
+	/**
+	 * @return the button10
+	 */
+	public Button getButton10() {
 		return button10;
 	}
-	
-	public Button GetButton11(){
+
+	/**
+	 * @return the button11
+	 */
+	public Button getButton11() {
 		return button11;
 	}
-	
-	public Button GetButton12(){
+
+	/**
+	 * @return the button12
+	 */
+	public Button getButton12() {
 		return button12;
 	}
-	
-	
-	//returns joystick X axis
+
+	/**
+	 * @return JS X Axis
+	 */
 	public double Get_X_Axis() {
 		return JS.getRawAxis(0);
 	}
 	
-	//returns joystick Y axis
+	/**
+	 * @return JS Y Axis
+	 */
 	public double Get_Y_Axis() {
 		return JS.getRawAxis(1);
 	}
 	
+	/**
+	 * @return the current state of JS Left Trigger
+	 */
 	public double get_LT_Axis(){
 		return JS.getRawAxis(2);
 	}
 	
+	/**
+	 * @return the current state of JS Right Trigger
+	 */
 	public double get_RT_Axis(){
 		return JS.getRawAxis(3);
 	}
 
+	/**
+	 * @return DrivingJS X Axis
+	 */
+	public double GetXAxis() {
+		return DrivingJS.getRawAxis(0);
+	}
 	
+	/**
+	 * @return DrivingJS Y Axis
+	 */
+	public double GetYAxis() {
+		return -DrivingJS.getRawAxis(1);
+	}
+	
+	/**
+	 * @return DrivingJS Z Axis (rotate)
+	 */
+	public double GetRotateAxix(){
+		return DrivingJS.getRawAxis(2);
+	}
+	
+	/**
+	 * @return Driving Slider Axis
+	 */
+	public double GetSliderAxis(){
+		return DrivingJS.getRawAxis(3);
+	}
+	
+	/**
+	 * @return the current state of the DrivingJS POV
+	 */
+	public int GetDrivePOV(){
+		return DrivingJS.getPOV(0);
+	}
+	
+	/**
+	 * @return the current state of the JS POV
+	 */
 	public int GetPOV(){
 		return JS.getPOV(0);
 	}
 	
-	public Button Get_X_Button(){
+	/**
+	 * @return the X Button
+	 */
+	public Button GetXButton(){
 		return buttonX;
 	}
 	
-	public Button Get_B_Button(){
+	/**
+	 * @return the B Button
+	 */
+	public Button GetBButton(){
 		return buttonB;
 	}
 }

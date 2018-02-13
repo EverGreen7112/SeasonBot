@@ -20,7 +20,8 @@ public class AngleOpen extends Command implements PIDSource, PIDOutput {
 	private double angle;
     public AngleOpen() {
         requires(Angle.getInstance());
-        
+    	anglePID = new PIDController(Kp, Ki, Kd, this, this);
+    	this.angle= Angle.getInstance().getGoalAngle();
     }
 
     // Called just before this Command runs the first time

@@ -86,7 +86,7 @@ public class Angle extends Subsystem {
 	 * returns the goal angle
 	 * @return the goal angle
 	 */
-	public static double getkGoalAngle() {
+	public double getGoalAngle() {
 		return kGoalAngle;
 	}
     
