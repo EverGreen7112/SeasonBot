@@ -1,11 +1,10 @@
 package org.usfirst.frc.team7112.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDOutput;
@@ -17,10 +16,10 @@ import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_Left;
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_Right;
 
 import org.usfirst.frc.team7112.robot.OI;
-import org.usfirst.frc.team7112.robot.commands.auto.TestAuto;
+import org.usfirst.frc.team7112.robot.commands.temp;
+import org.usfirst.frc.team7112.robot.commands.testing;
 import org.usfirst.frc.team7112.robot.commands.chassis.ArcadeDrive;
 import org.usfirst.frc.team7112.robot.commands.chassis.ArcadeDrivee;
-import org.usfirst.frc.team7112.robot.commands.chassis.DriveByDistance;
 
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Encoder_Left_A;
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Encoder_Left_B;
@@ -50,8 +49,9 @@ public class Chassis extends Subsystem {
 
 	private Chassis() {
 		//encoders
-		encLeft = new Encoder(Chassis_Encoder_Left_A, Chassis_Encoder_Left_B,true);
-		encRight = new Encoder(Chassis_Encoder_Right_A, Chassis_Encoder_Right_B,true);
+		encLeft = new Encoder(Chassis_Encoder_Left_A, Chassis_Encoder_Left_B);
+		encRight = new Encoder(Chassis_Encoder_Right_A, Chassis_Encoder_Right_B);
+		encLeft.setReverseDirection(true);
 		encLeft.setDistancePerPulse(kDistancePerPulse);
 		encRight.setDistancePerPulse(kDistancePerPulse);
 		encLeft.reset();
@@ -61,7 +61,6 @@ public class Chassis extends Subsystem {
 		//Talons
 		Talon_Left = new WPI_TalonSRX(Chassis_Talon_Left);
 		Talon_Right = new WPI_TalonSRX(Chassis_Talon_Right);
-		Talon_Right.setInverted(true);
 		Driver = new DifferentialDrive(Talon_Left, Talon_Right);
 		driveMultiplier = 0.5;
 	}
@@ -130,7 +129,8 @@ public class Chassis extends Subsystem {
 	public static final void init() {
 		instance = new Chassis();
     	OI.getInstance().GetBButton().whenPressed(new ArcadeDrivee());
-
+    	OI.getInstance().getButton10().whenPressed(new temp());
+    	OI.getInstance().getButton11().whenPressed(new testing(5));
 	}
 
 	public static final Chassis getInstance() {

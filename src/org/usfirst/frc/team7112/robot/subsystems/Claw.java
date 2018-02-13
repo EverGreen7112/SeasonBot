@@ -18,7 +18,7 @@ public class Claw extends Subsystem {
     private SpeedController motor;
     private DigitalInput switchIn;
     private DigitalInput switchOut;
-    private static final double speedModifier = 0.4;
+    private static final double speedModifier = 1;
     
     
     private Claw(){
@@ -27,16 +27,16 @@ public class Claw extends Subsystem {
     	switchOut= new DigitalInput(Claw_MicroSwitch_Out);
     }
     
-    //Initiates the Pliers
-    public static final void init() {
-		instance = new Claw();    	
-	}
 
     //sets the power to the motor
     public void setMotorPower(double Power) {
     	motor.set(Power);
     }
-    
+    //Initiates the Pliers
+    public static final void init() {
+		instance = new Claw();    	
+	}
+
     /**
 	 * @return the speedmodifier
 	 */

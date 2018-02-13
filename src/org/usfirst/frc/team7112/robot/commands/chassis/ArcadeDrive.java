@@ -33,6 +33,7 @@ public class ArcadeDrive extends Command {
     	SmartDashboard.putNumber("X_Axis",OI.getInstance().GetXAxis());
 		SmartDashboard.putNumber("encLeft", Chassis.getInstance().getDistanceL());
 		SmartDashboard.putNumber("encRight", Chassis.getInstance().getDistanceR());
+		SmartDashboard.putNumber("error", Chassis.getInstance().getDistanceR() - Chassis.getInstance().getDistanceL());
 		
     }
 
