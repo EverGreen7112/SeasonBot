@@ -11,9 +11,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_Left;
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_Right;
 
-import org.usfirst.frc.team7112.robot.OI;
 import org.usfirst.frc.team7112.robot.commands.chassis.ArcadeDrive;
-import org.usfirst.frc.team7112.robot.commands.chassis.ArcadeDrivee;
 
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Encoder_Left_A;
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Encoder_Left_B;
@@ -38,6 +36,7 @@ public class Chassis extends Subsystem {
 	
 	private DifferentialDrive Driver;
 	
+	private static final double kSlowDriveMultiplier = 0.3;
 	private static double driveMultiplier;
 	private static final double kDistancePerPulse = 1;//0.0447; //temp
 
@@ -61,6 +60,10 @@ public class Chassis extends Subsystem {
 	
 	public double getDriveMultiplier() {
 		return driveMultiplier;
+	}
+
+	public double getSlowDriveMultiplier() {
+		return kSlowDriveMultiplier;
 	}
 
 	public void setDriveMultiplier(double mult) {
@@ -122,7 +125,6 @@ public class Chassis extends Subsystem {
 
 	public static final void init() {
 		instance = new Chassis();
-    	OI.getInstance().GetBButton().whenPressed(new ArcadeDrivee());
 	}
 
 	public static final Chassis getInstance() {

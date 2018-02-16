@@ -21,9 +21,8 @@ public class UseClaw extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//if(!Claw.getInstance().switchPressed_Open())
+    	if(!Claw.getInstance().switchPressed_Open())
     		Claw.getInstance().setMotorPower(OI.getInstance().Get_Y_Axis()*Claw.getInstance().getSpeedmodifier());
-    	//if(!Claw.getInstance().switchPressed_Close())
     }
 
     // Make this return true when this Command no longer needs to run execute()

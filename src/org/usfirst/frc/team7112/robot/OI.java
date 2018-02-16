@@ -20,6 +20,7 @@ public class OI {
 	Button buttonB = new JoystickButton(JS, 3); //
 	Button buttonLB = new JoystickButton(JS, 5); //
 	Button buttonRB = new JoystickButton(JS, 6); //	
+	
 	public Joystick DrivingJS = new Joystick(0);
 	/**
 	 * Boosts the robot's speed
@@ -177,7 +178,7 @@ public class OI {
 	/**
 	 * @return DrivingJS Z Axis (rotate)
 	 */
-	public double GetRotateAxix(){
+	public double GetRotateAxis(){
 		return DrivingJS.getRawAxis(2);
 	}
 	

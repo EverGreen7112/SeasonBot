@@ -32,8 +32,8 @@ public class Angle extends Subsystem {
 		microSwitch = new DigitalInput(Angle_MicroSwitch);
 		//Encoder
 		encoder = new Encoder(Angle_Encoder_A,Angle_Encoder_B);
-		reset();
 		encoder.setDistancePerPulse(kDistancePerPulse);
+		reset();
 	}
 	
 	/**

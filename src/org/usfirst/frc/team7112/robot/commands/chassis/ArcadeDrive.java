@@ -12,8 +12,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class ArcadeDrive extends Command {
 
     public ArcadeDrive() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Chassis.getInstance());
     }
 
@@ -26,8 +24,9 @@ public class ArcadeDrive extends Command {
     protected void execute() {
     	
     	Chassis.getInstance().arcadeDrive(OI.getInstance().GetYAxis() * Chassis.getInstance().getDriveMultiplier(), OI.getInstance().GetXAxis() * Chassis.getInstance().getDriveMultiplier());
-    	//Chassis.getInstance().arcadeDrive(OI.getInstance().GetYAxis() * Chassis.getInstance().getDriveMultiplier(),0);
-    	SmartDashboard.putNumber("DriverMul", Chassis.getInstance().getDriveMultiplier());    	
+    	if(Math.abs(OI.getInstance().GetRotateAxis())>0.5)
+    		Chassis.getInstance().arcadeDrive(0,OI.getInstance().GetRotateAxis() * Chassis.getInstance().getSlowDriveMultiplier());
+    	SmartDashboard.putNumber("DriverSpeedMult", Chassis.getInstance().getDriveMultiplier());    	
     	SmartDashboard.putNumber("Encoder", Chassis.getInstance().getDistance());
     	SmartDashboard.putNumber("Y_Axis",OI.getInstance().GetYAxis());
     	SmartDashboard.putNumber("X_Axis",OI.getInstance().GetXAxis());
@@ -49,5 +48,6 @@ public class ArcadeDrive extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

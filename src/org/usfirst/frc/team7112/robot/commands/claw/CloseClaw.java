@@ -22,15 +22,12 @@ public class CloseClaw extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Claw.getInstance().switchPressed_Close())
     		Claw.getInstance().setMotorPower(OI.getInstance().get_LT_Axis()*Claw.getInstance().getSpeedmodifier());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Claw.getInstance().switchPressed_Close()) return true;
-    	
-        else return false;
+        return false;
     }
 
     // Called once after isFinished returns true

@@ -17,14 +17,12 @@ public class Claw extends Subsystem {
 	private static Claw instance;
     private SpeedController motor;
     private DigitalInput switchIn;
-    private DigitalInput switchOut;
-    private static final double speedModifier = 0.8;
+    private static final double speedModifier = 0.5;
     
     
     private Claw(){
     	motor = new WPI_TalonSRX(Claw_Talon);
     	switchIn = new DigitalInput(Claw_MicroSwitch_In);
-    	switchOut= new DigitalInput(Claw_MicroSwitch_Out);
     }
     
 
@@ -52,11 +50,6 @@ public class Claw extends Subsystem {
     //returns true is the InSwitch is pressed
     public boolean switchPressed_Open(){
     	return switchIn.get();
-    }
-    
-  //returns true is the OutSwitch is pressed
-    public boolean switchPressed_Close(){
-    	return switchOut.get();
     }
 
     //returns the instance of the claw
