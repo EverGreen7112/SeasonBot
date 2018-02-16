@@ -45,7 +45,6 @@ public class DriveByDistance extends Command implements PIDOutput , PIDSource {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	System.out.println("test");
     	SmartDashboard.putNumber("Drive PID P", drivePID.getP());
 		SmartDashboard.putNumber("Drive PID I", drivePID.getI());
 		SmartDashboard.putNumber("Drive PID D", drivePID.getD());

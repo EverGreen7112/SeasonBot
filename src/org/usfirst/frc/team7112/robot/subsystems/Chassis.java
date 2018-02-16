@@ -1,23 +1,17 @@
 package org.usfirst.frc.team7112.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.PIDOutput;
-import edu.wpi.first.wpilibj.PIDSource;
-import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.SpeedController;
 
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_Left;
 import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_Right;
 
 import org.usfirst.frc.team7112.robot.OI;
-import org.usfirst.frc.team7112.robot.commands.temp;
-import org.usfirst.frc.team7112.robot.commands.testing;
 import org.usfirst.frc.team7112.robot.commands.chassis.ArcadeDrive;
 import org.usfirst.frc.team7112.robot.commands.chassis.ArcadeDrivee;
 
@@ -129,8 +123,6 @@ public class Chassis extends Subsystem {
 	public static final void init() {
 		instance = new Chassis();
     	OI.getInstance().GetBButton().whenPressed(new ArcadeDrivee());
-    	OI.getInstance().getButton10().whenPressed(new temp());
-    	OI.getInstance().getButton11().whenPressed(new testing(5));
 	}
 
 	public static final Chassis getInstance() {

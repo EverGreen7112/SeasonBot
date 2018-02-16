@@ -8,32 +8,41 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class AngleClose extends Command {
+public class AutoMoveAngle extends Command {
 
-    public AngleClose() {
-        // Use requires() here to declare subsystem dependencies
-        requires(Angle.getInstance());
+	private int goalAngle;
+	/**
+	 * true is posotive (up), false is negitive (down)
+	 */
+	private boolean direction; 
+    public AutoMoveAngle(int angle) {
+    	requires(Angle.getInstance());
+    	goalAngle = angle;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	if(goalAngle > 0)
+    		direction = true;
+    	else
+    		direction = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	SmartDashboard.putNumber("angleEncoder", Angle.getInstance().getCurrentAngle());
-    	if(Angle.getInstance().isPressed() && Angle.getInstance().getCurrentAngle()!=0)
-    		Angle.getInstance().reset();
-    	//need to add the first time going down slowing mechanism
-    	if(!Angle.getInstance().isPressed()){
-    			Angle.getInstance().setMotorPower(Angle.getInstance().getSpeedModifier());
-    	}
+//    	if(Angle.getInstance().getCurrentAngle() >= Math.abs(goalAngle))
+//    		Angle.getInstance().stopMotor();
+//    	else
+    		if(direction)
+    		Angle.getInstance().setMotorPower(Angle.getInstance().getSpeedModifier());
+    		else
+        		Angle.getInstance().setMotorPower(-Angle.getInstance().getSpeedModifier());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Angle.getInstance().isPressed();
+        return Angle.getInstance().getCurrentAngle() >= Math.abs(goalAngle);
     }
 
     // Called once after isFinished returns true

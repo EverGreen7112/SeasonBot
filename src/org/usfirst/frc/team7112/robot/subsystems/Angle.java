@@ -22,7 +22,7 @@ public class Angle extends Subsystem {
 	private SpeedController motor;
 	private DigitalInput microSwitch;
 	private static final double kSpeedModifier = 0.5; //temp
-	private static final int kDistancePerPulse = 0; //temp
+	private static final double kDistancePerPulse = 0.0304878049; //degrees per round: 0.15697
 	private static final double kGoalAngle = 0; //temp
 	
 	private Angle(){
@@ -32,8 +32,8 @@ public class Angle extends Subsystem {
 		microSwitch = new DigitalInput(Angle_MicroSwitch);
 		//Encoder
 		encoder = new Encoder(Angle_Encoder_A,Angle_Encoder_B);
-		encoder.setDistancePerPulse(kDistancePerPulse);
 		reset();
+		encoder.setDistancePerPulse(kDistancePerPulse);
 	}
 	
 	/**
@@ -57,7 +57,11 @@ public class Angle extends Subsystem {
      * @return the current angle
      */
     public double getCurrentAngle(){
-    	return encoder.get();
+    	return encoder.getDistance();
+    }
+    
+    public boolean getCurrentDirection(){
+    	return encoder.getDirection();
     }
     
     /**
