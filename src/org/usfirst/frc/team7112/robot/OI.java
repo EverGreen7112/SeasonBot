@@ -34,6 +34,7 @@ public class OI {
 	Button buttonY = new JoystickButton(JS, 4);
 	Button buttonA = new JoystickButton(JS, 2);
 	Button buttonLT = new JoystickButton(JS, 7);
+	Button buttonRT = new JoystickButton(JS, 8);
 	
 	
 	
@@ -73,7 +74,7 @@ public class OI {
 		button6.whenPressed(new OpenClaw());
 		button6.whenReleased(new StopClaw());
 		
-		//OperatorJS key bindings
+		//OperatorJS key bindings (Elad)
 		buttonY.whenPressed(new AngleOpen());
 		buttonY.whenReleased(new StopAngle());
 		buttonA.whenPressed(new AngleClose());
@@ -84,6 +85,24 @@ public class OI {
 		buttonB.whenReleased(new StopClaw());
 		buttonLB.whenPressed(new PullRope());
 		buttonLB.whenReleased(new StopClimberMotors());
+		
+		//OperatorJS key bindings (Yonathan)
+		buttonY.whenPressed(new AngleClose());
+		buttonY.whenReleased(new StopAngle());
+		buttonA.whenPressed(new AngleOpen());
+		buttonA.whenReleased(new StopAngle());
+		buttonX.whenPressed(new OpenClaw());
+		buttonX.whenReleased(new StopClaw());
+		buttonB.whenPressed(new CloseClaw());
+		buttonB.whenReleased(new StopClaw());
+		buttonLB.whenPressed(new TapeOpen());
+		buttonLB.whenReleased(new StopTape());
+		buttonRB.whenPressed(new PushRope());
+		buttonRB.whenReleased(new stopClimberMotors());
+		buttonLT.whenPressed(new TapeClose());
+		buttonLT.whenReleased(new StopTape());
+		buttonRT.whenPressed(new PullRope());
+		buttonRT.whenReleased(new StopClimberMotors());
 	}
 	
 	public Button Get_LB_Button(){
@@ -247,6 +266,12 @@ public class OI {
 	public Button GetBButton(){
 		return buttonB;
 	}
+	
+	public Button GetRTButton(){
+		return buttonRT;
+	}
+	
+	
 	
 	//creates an instance of OI
 	public static final void init() {
