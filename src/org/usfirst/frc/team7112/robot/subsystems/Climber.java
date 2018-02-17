@@ -46,6 +46,11 @@ public class Climber extends Subsystem {
 	    	tapeMotor.stopMotor();
 	    }
 	    
+	    //stops the tape motors
+	    public void stopRopeMotors(){
+	    	ropeMotor.stopMotor();
+	    }
+	    
 	    /**
 	     * returns the power modifier of the rope motors
 	     * @return the rope power modifier

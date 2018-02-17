@@ -42,8 +42,7 @@ public class RobotMap {
 	
 	//MicroSwitches
 	public static final int 
-			Claw_MicroSwitch_In = 8,
-			Claw_MicroSwitch_Out = 9;
+			Claw_MicroSwitch_In = 8;
 	
 	//---------Climber---------
 	

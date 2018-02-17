@@ -7,6 +7,17 @@
 
 package org.usfirst.frc.team7112.robot;
 
+import org.usfirst.frc.team7112.robot.commands.angle.AngleClose;
+import org.usfirst.frc.team7112.robot.commands.angle.AngleOpen;
+import org.usfirst.frc.team7112.robot.commands.angle.StopAngle;
+import org.usfirst.frc.team7112.robot.commands.chassis.ChangeSpeedModifier;
+import org.usfirst.frc.team7112.robot.commands.claw.CloseClaw;
+import org.usfirst.frc.team7112.robot.commands.claw.OpenClaw;
+import org.usfirst.frc.team7112.robot.commands.claw.StopClaw;
+import org.usfirst.frc.team7112.robot.commands.climber.PullRope;
+import org.usfirst.frc.team7112.robot.commands.climber.StopClimberMotors;
+import org.usfirst.frc.team7112.robot.subsystems.Chassis;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -20,6 +31,12 @@ public class OI {
 	Button buttonB = new JoystickButton(JS, 3); //
 	Button buttonLB = new JoystickButton(JS, 5); //
 	Button buttonRB = new JoystickButton(JS, 6); //	
+	Button buttonY = new JoystickButton(JS, 4);
+	Button buttonA = new JoystickButton(JS, 2);
+	Button buttonLT = new JoystickButton(JS, 7);
+	
+	
+	
 	
 	public Joystick DrivingJS = new Joystick(0);
 	/**
@@ -45,14 +62,28 @@ public class OI {
 	Button button11 = new JoystickButton(DrivingJS, 11);
 	Button button12 = new JoystickButton(DrivingJS, 12);
 	
-	//creates an instance of OI
-	public static final void init() {
-		instance = new OI();
-	}
-	
-	//returns the current instance of OI
-	public static final OI getInstance() {
-		return instance;
+	public void BindKeys(){
+		//DrivingJS key bindings
+		buttonTrigger.whenPressed(new ChangeSpeedModifier(Chassis.getInstance().getFastDriveMultiplier()));
+		buttonTrigger.whenReleased(new ChangeSpeedModifier(Chassis.getInstance().getDriveMultiplier()));
+		buttonThumb.whenPressed(new ChangeSpeedModifier(Chassis.getInstance().getSlowDriveMultiplier()));
+		buttonThumb.whenReleased(new ChangeSpeedModifier(Chassis.getInstance().getDriveMultiplier()));
+		button5.whenPressed(new CloseClaw());
+		button5.whenReleased(new StopClaw());
+		button6.whenPressed(new OpenClaw());
+		button6.whenReleased(new StopClaw());
+		
+		//OperatorJS key bindings
+		buttonY.whenPressed(new AngleOpen());
+		buttonY.whenReleased(new StopAngle());
+		buttonA.whenPressed(new AngleClose());
+		buttonA.whenReleased(new StopAngle());
+		buttonX.whenPressed(new OpenClaw());
+		buttonX.whenReleased(new StopClaw());
+		buttonB.whenPressed(new CloseClaw());
+		buttonB.whenReleased(new StopClaw());
+		buttonLB.whenPressed(new PullRope());
+		buttonLB.whenReleased(new StopClimberMotors());
 	}
 	
 	public Button Get_LB_Button(){
@@ -215,5 +246,15 @@ public class OI {
 	 */
 	public Button GetBButton(){
 		return buttonB;
+	}
+	
+	//creates an instance of OI
+	public static final void init() {
+		instance = new OI();
+	}
+	
+	//returns the current instance of OI
+	public static final OI getInstance() {
+		return instance;
 	}
 }

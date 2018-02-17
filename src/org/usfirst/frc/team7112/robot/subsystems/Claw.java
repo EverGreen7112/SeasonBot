@@ -1,7 +1,6 @@
 package org.usfirst.frc.team7112.robot.subsystems;
 
 import static org.usfirst.frc.team7112.robot.RobotMap.Claw_MicroSwitch_In;
-import static org.usfirst.frc.team7112.robot.RobotMap.Claw_MicroSwitch_Out;
 import static org.usfirst.frc.team7112.robot.RobotMap.Claw_Talon;
 
 import org.usfirst.frc.team7112.robot.commands.claw.UseClaw;

@@ -37,7 +37,9 @@ public class Chassis extends Subsystem {
 	private DifferentialDrive Driver;
 	
 	private static final double kSlowDriveMultiplier = 0.3;
+	private static final double kFastDriveMultiplier = 0.8;
 	private static double driveMultiplier;
+	
 	private static final double kDistancePerPulse = 1;//0.0447; //temp
 
 	private Chassis() {
@@ -55,7 +57,7 @@ public class Chassis extends Subsystem {
 		Talon_Left = new WPI_TalonSRX(Chassis_Talon_Left);
 		Talon_Right = new WPI_TalonSRX(Chassis_Talon_Right);
 		Driver = new DifferentialDrive(Talon_Left, Talon_Right);
-		driveMultiplier = 0.5;
+		driveMultiplier = 0.6;
 	}
 	
 	public double getDriveMultiplier() {
@@ -64,6 +66,13 @@ public class Chassis extends Subsystem {
 
 	public double getSlowDriveMultiplier() {
 		return kSlowDriveMultiplier;
+	}
+
+	/**
+	 * @return the kfastdrivemultiplier
+	 */
+	public double getFastDriveMultiplier() {
+		return kFastDriveMultiplier;
 	}
 
 	public void setDriveMultiplier(double mult) {

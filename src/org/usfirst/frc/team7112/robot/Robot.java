@@ -24,8 +24,6 @@ import org.usfirst.frc.team7112.robot.commands.auto.TestAuto;
  */
 public class Robot extends IterativeRobot {
 	
-	public static OI oi;
-	public static Chassis chassis;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
