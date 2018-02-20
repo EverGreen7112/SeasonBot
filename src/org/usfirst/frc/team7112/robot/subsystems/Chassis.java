@@ -7,9 +7,12 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
-import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_Left;
-import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_Right;
+import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_FrontLeft;
+import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_FrontRight;
+import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_BackLeft;
+import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Talon_BackRight;
 
 import org.usfirst.frc.team7112.robot.commands.chassis.ArcadeDrive;
 
@@ -25,8 +28,13 @@ import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Encoder_Right_B;
  */
 public class Chassis extends Subsystem {
 
-	private SpeedController Talon_Left;
-	private SpeedController Talon_Right;
+	private SpeedController talon_FrontLeft;
+	private SpeedController talon_FrontRight;
+	private SpeedController talon_BackLeft;
+	private SpeedController talon_BackRight;
+	
+	private SpeedControllerGroup leftMotors;
+	private SpeedControllerGroup rightMotors;
 	
 	private static Chassis instance;
 		
@@ -40,7 +48,7 @@ public class Chassis extends Subsystem {
 	private static final double kFastDriveMultiplier = 0.8;
 	private static double driveMultiplier;
 	
-	private static final double kDistancePerPulse = 1;//0.0447; //temp
+	private static final double kDistancePerPulse = 0.0022307;
 
 	private Chassis() {
 		//encoders
@@ -54,9 +62,13 @@ public class Chassis extends Subsystem {
 		//gyro
 		gyro = new AnalogGyro(0); // temp
 		//Talons
-		Talon_Left = new WPI_TalonSRX(Chassis_Talon_Left);
-		Talon_Right = new WPI_TalonSRX(Chassis_Talon_Right);
-		Driver = new DifferentialDrive(Talon_Left, Talon_Right);
+		talon_FrontLeft = new WPI_TalonSRX(Chassis_Talon_FrontLeft);
+		talon_FrontRight = new WPI_TalonSRX(Chassis_Talon_FrontRight);
+		talon_BackLeft = new WPI_TalonSRX(Chassis_Talon_BackLeft);
+		talon_BackRight = new WPI_TalonSRX(Chassis_Talon_BackRight);
+		leftMotors = new SpeedControllerGroup(talon_FrontLeft, talon_BackLeft);
+		rightMotors = new SpeedControllerGroup(talon_FrontRight, talon_BackRight);
+		Driver = new DifferentialDrive(leftMotors, rightMotors);
 		driveMultiplier = 0.6;
 	}
 	
@@ -86,11 +98,6 @@ public class Chassis extends Subsystem {
 
 	public double getSpeed() {
 		return (encLeft.getRate() + encRight.getRate()) / 2;// maybe + instead of -
-	}
-	
-	public void test(){
-		Talon_Left.set(0.2);
-		Talon_Right.set(0.2);
 	}
 	
 	/**
@@ -130,6 +137,11 @@ public class Chassis extends Subsystem {
 	 */
 	public void resetGyro() {
 		gyro.reset();
+	}
+	
+	public void switchPerspectives(){
+		leftMotors.setInverted(!leftMotors.getInverted());
+		rightMotors.setInverted(!rightMotors.getInverted());
 	}
 
 	public static final void init() {

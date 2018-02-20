@@ -6,6 +6,7 @@ import static org.usfirst.frc.team7112.robot.RobotMap.Claw_Talon;
 import org.usfirst.frc.team7112.robot.commands.claw.UseClaw;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -16,7 +17,7 @@ public class Claw extends Subsystem {
 	private static Claw instance;
     private SpeedController motor;
     private DigitalInput switchIn;
-    private static final double speedModifier = 0.5;
+    private static final double speedModifier = 0.6;
     
     
     private Claw(){

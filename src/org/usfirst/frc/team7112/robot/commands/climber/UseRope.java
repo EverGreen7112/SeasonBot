@@ -20,11 +20,11 @@ public class UseRope extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(OI.getInstance().GetPOV() == 0){
+    	if(OI.getInstance().GetPOV() == 0){ //counter clockwise
     		Climber.getInstance().setRopeMotorPower(Climber.getInstance().getRopePowerModifier());
     		Climber.getInstance().setTapeMotorsPower(-Climber.getInstance().getTapePowerModifier());
     	}
-    	else if(OI.getInstance().GetPOV() == 180){
+    	else if(OI.getInstance().GetPOV() == 180){ //clockwise
     		Climber.getInstance().setRopeMotorPower(-Climber.getInstance().getRopePowerModifier());
     		Climber.getInstance().setTapeMotorsPower(Climber.getInstance().getTapePowerModifier());
     	}

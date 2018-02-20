@@ -1,15 +1,15 @@
 package org.usfirst.frc.team7112.robot.subsystems;
 
-import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Rope_Talon;
-import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Tape_Talon;
+import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Rope_FrontSpark;
+import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Rope_BackSpark;
+import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Tape_Spark;
 
-import org.usfirst.frc.team7112.robot.OI;
-import org.usfirst.frc.team7112.robot.commands.climber.StopTape;
-import org.usfirst.frc.team7112.robot.commands.climber.TapeClose;
-import org.usfirst.frc.team7112.robot.commands.climber.TapeOpen;
 import org.usfirst.frc.team7112.robot.commands.climber.UseRope;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
+
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -22,18 +22,22 @@ public class Climber extends Subsystem {
 	
 		private static Climber instance;
 		private SpeedController tapeMotor;
-		private SpeedController ropeMotor;
-		private final double ropePowerModifier = 0.4, tapePowerModifier= 0.4;
+		private SpeedController ropeFrontMotor;
+		private SpeedController ropeBackMotor;
+		private final double ropePowerModifier = 0.7, tapePowerModifier= 0.4;
 	
 		private Climber(){
-			ropeMotor = new WPI_TalonSRX(Climber_Rope_Talon);
-			tapeMotor = new WPI_TalonSRX(Climber_Tape_Talon);
-			ropeMotor.setInverted(true);
+			ropeFrontMotor = new Spark(Climber_Rope_FrontSpark);
+			ropeBackMotor = new Spark(Climber_Rope_BackSpark);
+			tapeMotor = new Spark(Climber_Tape_Spark);
+			ropeFrontMotor.setInverted(true);
+			ropeBackMotor.setInverted(true);
 		}
 		
 		//sets the power to the rope motor
 	    public void setRopeMotorPower(double power) {
-	    	ropeMotor.set(power);
+	    	ropeFrontMotor.set(power);
+	    	((BaseMotorController)ropeBackMotor).set(ControlMode.Follower,Climber_Rope_FrontSpark);
 	    }
 	    
 	    //sets the power to the tape motors
@@ -48,7 +52,8 @@ public class Climber extends Subsystem {
 	    
 	    //stops the tape motors
 	    public void stopRopeMotors(){
-	    	ropeMotor.stopMotor();
+	    	ropeFrontMotor.stopMotor();
+	    	ropeBackMotor.stopMotor();
 	    }
 	    
 	    /**
@@ -66,19 +71,10 @@ public class Climber extends Subsystem {
 	    public double getTapePowerModifier(){
 	    	return tapePowerModifier;
 	    }
-	    
-	    //binds the keys for the tape and rope controls. LB open tape, RB close tape
-	    private static void bindKeys(){
-	    	OI.getInstance().Get_LB_Button().whenPressed(new TapeOpen());
-	    	OI.getInstance().Get_LB_Button().whenReleased(new StopTape());
-	    	OI.getInstance().Get_RB_Button().whenPressed(new TapeClose());
-	    	OI.getInstance().Get_RB_Button().whenActive(new StopTape());
-	    }
-	    
+
 	    public static final void init() {
 			instance = new Climber();
-			bindKeys();
-		}	
+			}	
 	    
 	 //returns the instance of the climber
 		public static final Climber getInstance() {

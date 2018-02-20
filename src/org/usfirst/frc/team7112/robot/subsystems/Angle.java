@@ -1,11 +1,12 @@
 package org.usfirst.frc.team7112.robot.subsystems;
 
 import static org.usfirst.frc.team7112.robot.RobotMap.Angle_Talon;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import static org.usfirst.frc.team7112.robot.RobotMap.Angle_MicroSwitch;
 import static org.usfirst.frc.team7112.robot.RobotMap.Angle_Encoder_A;
 import static org.usfirst.frc.team7112.robot.RobotMap.Angle_Encoder_B;
-
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
