@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class UseRope extends Command {
+public class UseTape extends Command {
 
-    public UseRope() {
+    public UseTape() {
         requires(Climber.getInstance());
     }
 
@@ -21,15 +21,12 @@ public class UseRope extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(OI.getInstance().GetPOV() == 0){ //counter clockwise
-    		Climber.getInstance().setRopeMotorPower(Climber.getInstance().getRopePowerModifier());
     		Climber.getInstance().setTapeMotorsPower(-Climber.getInstance().getTapePowerModifierOpen());
     	}
     	else if(OI.getInstance().GetPOV() == 180){ //clockwise
-    		Climber.getInstance().setRopeMotorPower(-Climber.getInstance().getRopePowerModifier());
     		Climber.getInstance().setTapeMotorsPower(Climber.getInstance().getTapePowerModifierClose());
     	}
     	else if(OI.getInstance().GetPOV() == -1){
-    		Climber.getInstance().setRopeMotorPower(0);	
     		Climber.getInstance().stopTapeMotors();
     	}
     }

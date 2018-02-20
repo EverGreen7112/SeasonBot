@@ -1,4 +1,4 @@
-package org.usfirst.frc.team7112.robot.commands.climber;
+package org.usfirst.frc.team7112.robot.commands;
 
 import org.usfirst.frc.team7112.robot.subsystems.Climber;
 
@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class PullRope extends Command {
+public class SlowClimb extends Command {
 
-    public PullRope() {
+    public SlowClimb() {
         // Use requires() here to declare subsystem dependencies
         requires(Climber.getInstance());
     }
@@ -20,7 +20,7 @@ public class PullRope extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Climber.getInstance().setRopeMotorPower(-Climber.getInstance().getRopePowerModifier());
+    	Climber.getInstance().setRopeMotorPower(-0.4);
     }
 
     // Make this return true when this Command no longer needs to run execute()

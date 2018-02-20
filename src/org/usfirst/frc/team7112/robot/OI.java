@@ -8,6 +8,7 @@
 package org.usfirst.frc.team7112.robot;
 
 import org.usfirst.frc.team7112.robot.commands.ResetDrivingEncoders;
+import org.usfirst.frc.team7112.robot.commands.SlowClimb;
 import org.usfirst.frc.team7112.robot.commands.angle.AngleClose;
 import org.usfirst.frc.team7112.robot.commands.angle.AngleOpen;
 import org.usfirst.frc.team7112.robot.commands.angle.StopAngle;
@@ -100,13 +101,13 @@ public class OI {
 		button6.whenPressed(new OpenClaw());
 		button6.whenReleased(new StopClaw());
 		button7.whenPressed(new TapeClose());
-		button7.whenPressed(new StopTape());
+		button7.whenReleased(new StopTape());
 		button8.whenPressed(new TapeOpen());
 		button8.whenReleased(new StopTape());
 		button12.whenPressed(new SwitchPerspectives());
 		button11.whenPressed(new ResetDrivingEncoders());
-//			button9.whenPressed(new PullRope());
-//			button9.whenReleased(new StopClimberMotors());
+		button9.whenPressed(new PullRope());
+		button9.whenReleased(new StopClimberMotors());
 
 		//OperatorJS key bindings
 		buttonY.whenPressed(new AngleOpen());
@@ -119,6 +120,8 @@ public class OI {
 		buttonB.whenReleased(new StopClaw());
 		buttonLB.whenPressed(new PullRope());
 		buttonLB.whenReleased(new StopClimberMotors());
+		buttonRB.whenPressed(new SlowClimb());
+		buttonRB.whenReleased(new StopClimberMotors());
 	}
 
 	public Button Get_LB_Button(){

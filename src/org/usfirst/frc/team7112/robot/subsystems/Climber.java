@@ -4,7 +4,7 @@ import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Rope_FrontSpark;
 import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Rope_BackSpark;
 import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Tape_Spark;
 
-import org.usfirst.frc.team7112.robot.commands.climber.UseRope;
+import org.usfirst.frc.team7112.robot.commands.climber.UseTape;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -34,7 +34,7 @@ public class Climber extends Subsystem {
 		//sets the power to the rope motor
 	    public void setRopeMotorPower(double power) {
 	    	ropeFrontMotor.set(power);
-	    	//ropeBackMotor.set(ControlMode.Follower,Climber_Rope_FrontSpark);
+	    	ropeBackMotor.set(power);
 	    }
 	    
 	    //sets the power to the tape motors
@@ -84,7 +84,7 @@ public class Climber extends Subsystem {
 	
 
     public void initDefaultCommand() {
-        setDefaultCommand(new UseRope());
+        setDefaultCommand(new UseTape());
     }
 
 	

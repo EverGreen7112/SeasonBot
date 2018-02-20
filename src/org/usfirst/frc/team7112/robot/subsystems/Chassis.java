@@ -4,7 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -40,10 +40,11 @@ public class Chassis extends Subsystem {
 		
 	private Encoder encLeft, encRight;
 	
-	private AnalogGyro gyro;
+	private ADXRS450_Gyro gyro;
 	
 	private DifferentialDrive Driver;
 	
+	private boolean isInverted = false;
 	private static final double kSlowDriveMultiplier = 0.3;
 	private static final double kFastDriveMultiplier = 0.8;
 	private static double driveMultiplier;
@@ -60,7 +61,7 @@ public class Chassis extends Subsystem {
 		encLeft.reset();
 		encRight.reset();
 		//gyro
-		gyro = new AnalogGyro(0); // temp
+		gyro = new ADXRS450_Gyro(); // temp
 		//Talons
 		talon_FrontLeft = new WPI_TalonSRX(Chassis_Talon_FrontLeft);
 		talon_FrontRight = new WPI_TalonSRX(Chassis_Talon_FrontRight);
@@ -85,6 +86,10 @@ public class Chassis extends Subsystem {
 	 */
 	public double getFastDriveMultiplier() {
 		return kFastDriveMultiplier;
+	}
+
+	public boolean isInverted() {
+		return isInverted;
 	}
 
 	public void setDriveMultiplier(double mult) {
@@ -142,6 +147,7 @@ public class Chassis extends Subsystem {
 	public void switchPerspectives(){
 		leftMotors.setInverted(!leftMotors.getInverted());
 		rightMotors.setInverted(!rightMotors.getInverted());
+		isInverted = !isInverted;
 	}
 
 	public static final void init() {

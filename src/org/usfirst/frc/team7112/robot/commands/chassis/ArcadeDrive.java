@@ -22,10 +22,15 @@ public class ArcadeDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	Chassis.getInstance().arcadeDrive(OI.getInstance().GetYAxis() * Chassis.getInstance().getDriveMultiplier(), OI.getInstance().GetXAxis() * Chassis.getInstance().getDriveMultiplier());
+    	if(Chassis.getInstance().isInverted())
+    	{
+        	Chassis.getInstance().arcadeDrive(OI.getInstance().GetYAxis() * Chassis.getInstance().getDriveMultiplier(), -OI.getInstance().GetXAxis() * Chassis.getInstance().getDriveMultiplier());
+    	}
+    	else 
+    		Chassis.getInstance().arcadeDrive(OI.getInstance().GetYAxis() * Chassis.getInstance().getDriveMultiplier(), OI.getInstance().GetXAxis() * Chassis.getInstance().getDriveMultiplier());
     	if(Math.abs(OI.getInstance().GetRotateAxis())>0.5)
     		Chassis.getInstance().arcadeDrive(0,OI.getInstance().GetRotateAxis() * Chassis.getInstance().getSlowDriveMultiplier());
+    	
     	SmartDashboard.putNumber("DriverSpeedMult", Chassis.getInstance().getDriveMultiplier());    	
     	SmartDashboard.putNumber("Encoder", Chassis.getInstance().getDistance());
     	SmartDashboard.putNumber("Y_Axis",OI.getInstance().GetYAxis());
