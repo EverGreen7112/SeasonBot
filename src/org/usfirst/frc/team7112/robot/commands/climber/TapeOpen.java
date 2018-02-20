@@ -19,7 +19,7 @@ public class TapeOpen extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Climber.getInstance().setTapeMotorsPower(-Climber.getInstance().getTapePowerModifier());
+    	Climber.getInstance().setTapeMotorsPower(-Climber.getInstance().getTapePowerModifierOpen());
     }
 
     // Make this return true when this Command no longer needs to run execute()

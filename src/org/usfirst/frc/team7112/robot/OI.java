@@ -105,11 +105,8 @@ public class OI {
 		button8.whenReleased(new StopTape());
 		button12.whenPressed(new SwitchPerspectives());
 		button11.whenPressed(new ResetDrivingEncoders());
-		if(GetSliderAxis()<0.25)
-		{
-			button9.whenPressed(new PullRope());
-			button9.whenReleased(new StopClimberMotors());
-		}
+//			button9.whenPressed(new PullRope());
+//			button9.whenReleased(new StopClimberMotors());
 
 		//OperatorJS key bindings
 		buttonY.whenPressed(new AngleOpen());
@@ -249,13 +246,6 @@ public class OI {
 	 */
 	public double GetRotateAxis(){
 		return DrivingJS.getRawAxis(2);
-	}
-
-	/**
-	 * @return Driving Slider Axis
-	 */
-	public double GetSliderAxis(){
-		return DrivingJS.getRawAxis(3);
 	}
 
 	/**

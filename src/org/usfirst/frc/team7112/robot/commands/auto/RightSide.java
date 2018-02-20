@@ -26,8 +26,7 @@ public class RightSide extends CommandGroup {
         addSequential(new DriveByDistance(0,-45));
         addSequential(new DriveByDistance(0.62));
         addSequential(new DriveByDistance(0,-37.5));
-        addSequential(new DriveByDistance(0.5));
-        addSequential(new DriveByDistance(0.2));
+        addSequential(new DriveByDistance(0.24));
         addParallel(new AutoMoveAngle(-20));
         addSequential(new AutoOpenClaw());
     }

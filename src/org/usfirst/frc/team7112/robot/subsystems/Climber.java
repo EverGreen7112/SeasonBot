@@ -6,9 +6,6 @@ import static org.usfirst.frc.team7112.robot.RobotMap.Climber_Tape_Spark;
 
 import org.usfirst.frc.team7112.robot.commands.climber.UseRope;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
-
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -24,7 +21,7 @@ public class Climber extends Subsystem {
 		private SpeedController tapeMotor;
 		private SpeedController ropeFrontMotor;
 		private SpeedController ropeBackMotor;
-		private final double ropePowerModifier = 0.7, tapePowerModifier= 0.4;
+		private final double ropePowerModifier = 0.7, tapePowerModifierOpen= 0.8, tapePowerModifierClose=0.6;
 	
 		private Climber(){
 			ropeFrontMotor = new Spark(Climber_Rope_FrontSpark);
@@ -68,8 +65,12 @@ public class Climber extends Subsystem {
 	     * returns the power modifier of the tape motors
 	     * @return the tape power modifier
 	     */
-	    public double getTapePowerModifier(){
-	    	return tapePowerModifier;
+	    public double getTapePowerModifierOpen(){
+	    	return tapePowerModifierOpen;
+	    }
+	    
+	    public double getTapePowerModifierClose(){
+	    	return tapePowerModifierClose;
 	    }
 
 	    public static final void init() {

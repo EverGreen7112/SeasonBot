@@ -22,11 +22,11 @@ public class UseRope extends Command {
     protected void execute() {
     	if(OI.getInstance().GetPOV() == 0){ //counter clockwise
     		Climber.getInstance().setRopeMotorPower(Climber.getInstance().getRopePowerModifier());
-    		Climber.getInstance().setTapeMotorsPower(-Climber.getInstance().getTapePowerModifier());
+    		Climber.getInstance().setTapeMotorsPower(-Climber.getInstance().getTapePowerModifierOpen());
     	}
     	else if(OI.getInstance().GetPOV() == 180){ //clockwise
     		Climber.getInstance().setRopeMotorPower(-Climber.getInstance().getRopePowerModifier());
-    		Climber.getInstance().setTapeMotorsPower(Climber.getInstance().getTapePowerModifier());
+    		Climber.getInstance().setTapeMotorsPower(Climber.getInstance().getTapePowerModifierClose());
     	}
     	else if(OI.getInstance().GetPOV() == -1){
     		Climber.getInstance().setRopeMotorPower(0);	
