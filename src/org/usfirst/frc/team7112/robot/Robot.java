@@ -8,9 +8,12 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team7112.robot.subsystems.Angle;
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 import org.usfirst.frc.team7112.robot.subsystems.Claw;
+import org.usfirst.frc.team7112.robot.subsystems.Climber;
 import org.usfirst.frc.team7112.robot.OI;
+import org.usfirst.frc.team7112.robot.commands.auto.TestAuto;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,8 +24,6 @@ import org.usfirst.frc.team7112.robot.OI;
  */
 public class Robot extends IterativeRobot {
 	
-	public static OI oi;
-	public static Chassis chassis;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -35,6 +36,9 @@ public class Robot extends IterativeRobot {
 		OI.init();
 		Chassis.init();
 		Claw.init();
+		Climber.init();
+		Angle.init();
+		autonomousCommand = new TestAuto();
 	}
 	
 	/**
@@ -95,7 +99,7 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		
+		OI.getInstance().BindKeys();
 		
 		
 	}
@@ -106,6 +110,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("Gyro", Chassis.getInstance().getAngle());
 	}
 
 	/**

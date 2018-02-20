@@ -17,27 +17,55 @@ public class RobotMap {
 	 
 	//---------Chassis---------
 	
-	//Talons
+	/**
+	 * The chassis ports.
+	 * 
+	 * @see {@link org.usfirst.frc.team7112.robot.subsystems.Chassis Chassis}
+	 */
 	public static final int 
-			Chassis_Talon_Left = 0,
-			Chassis_Talon_Right = 1;
+			Chassis_Talon_BackLeft = 1,
+			Chassis_Talon_FrontLeft = 3,
+			Chassis_Talon_BackRight = 4,
+			Chassis_Talon_FrontRight = 5;
+	
+	//Encoders
+	public static final int
+			Chassis_Encoder_Left_A = 3,
+			Chassis_Encoder_Left_B = 4,
+			Chassis_Encoder_Right_A = 5,
+			Chassis_Encoder_Right_B = 6;
 	
 	
 	//---------Claw---------
 	
 	//Talon
 	public static final int
-			Claw_Talon = 2;
+			Claw_Talon = 0;
 	
 	//MicroSwitches
 	public static final int 
-			Pliers_MicroSwitch_In = 0,
-			Pliers_MicroSwitch_Out = 1;
+			Claw_MicroSwitch_In = 8;
 	
 	//---------Climber---------
 	
-	//Talons
+	//Sparks
 	public static final int
-			Climber_Rope_Talon = 2,
-			Climber_Tape_Talon = 3;
+			Climber_Tape_Spark = 0,
+			Climber_Rope_BackSpark = 1,
+			Climber_Rope_FrontSpark = 2;
+		
+	//---------Angle---------
+	
+	//Talon
+	public static final int
+			Angle_Talon = 2;
+	
+	//MicroSwitch
+	public static final int
+			Angle_MicroSwitch = 7;
+	
+	//Encoder
+	public static final int
+			Angle_Encoder_A = 0,
+			Angle_Encoder_B = 1;
 }
