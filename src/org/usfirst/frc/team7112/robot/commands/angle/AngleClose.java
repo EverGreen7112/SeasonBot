@@ -33,7 +33,7 @@ public class AngleClose extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Angle.getInstance().isPressed();
+        return !Angle.getInstance().isPressed();
     }
 
     // Called once after isFinished returns true

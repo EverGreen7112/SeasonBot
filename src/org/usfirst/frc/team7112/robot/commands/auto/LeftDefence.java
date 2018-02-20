@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *For use when the starting position is on the left side, and the switch's left side is the enemy alliences'. </br>
  *The robot passes the auto line, moves toward the space between the cubes and the platform, then goes 6 meters strait through
  */
-public class LeftNothingOnSide extends CommandGroup {
+public class LeftDefence extends CommandGroup {
 
-    public LeftNothingOnSide() {
+    public LeftDefence() {
     	requires(Chassis.getInstance());
     	requires(Claw.getInstance());
     	requires(Angle.getInstance());

@@ -18,6 +18,9 @@ import org.usfirst.frc.team7112.robot.commands.claw.OpenClaw;
 import org.usfirst.frc.team7112.robot.commands.claw.StopClaw;
 import org.usfirst.frc.team7112.robot.commands.climber.PullRope;
 import org.usfirst.frc.team7112.robot.commands.climber.StopClimberMotors;
+import org.usfirst.frc.team7112.robot.commands.climber.StopTape;
+import org.usfirst.frc.team7112.robot.commands.climber.TapeClose;
+import org.usfirst.frc.team7112.robot.commands.climber.TapeOpen;
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -96,8 +99,17 @@ public class OI {
 		button5.whenReleased(new StopClaw());
 		button6.whenPressed(new OpenClaw());
 		button6.whenReleased(new StopClaw());
-		button8.whenPressed(new SwitchPerspectives());
+		button7.whenPressed(new TapeClose());
+		button7.whenPressed(new StopTape());
+		button8.whenPressed(new TapeOpen());
+		button8.whenReleased(new StopTape());
+		button12.whenPressed(new SwitchPerspectives());
 		button11.whenPressed(new ResetDrivingEncoders());
+		if(GetSliderAxis()<0.25)
+		{
+			button9.whenPressed(new PullRope());
+			button9.whenReleased(new StopClimberMotors());
+		}
 
 		//OperatorJS key bindings
 		buttonY.whenPressed(new AngleOpen());

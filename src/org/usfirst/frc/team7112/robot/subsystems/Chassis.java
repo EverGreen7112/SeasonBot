@@ -155,6 +155,10 @@ public class Chassis extends Subsystem {
 	public void arcadeDrive(double forward, double side) {
 		Driver.arcadeDrive(forward, side);
 	}
+	
+	public void tankDrive(double speedLeft, double speedRight){
+		Driver.tankDrive(speedLeft, speedRight);
+	}
 
 	@Override
 	protected void initDefaultCommand() {

@@ -48,15 +48,12 @@ public class RobotMap {
 	
 	//---------Climber---------
 	
-	//Talons
+	//Sparks
 	public static final int
+			Climber_Tape_Spark = 0,
 			Climber_Rope_BackSpark = 1,
 			Climber_Rope_FrontSpark = 2;
-	
-	//Spark
-	public static final int
-			Climber_Tape_Spark = 0;
-	
+		
 	//---------Angle---------
 	
 	//Talon

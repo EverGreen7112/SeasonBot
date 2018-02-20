@@ -10,9 +10,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class RightNothingOnSide extends CommandGroup {
+public class RightDefence extends CommandGroup {
 
-    public RightNothingOnSide() {
+    public RightDefence() {
     	requires(Chassis.getInstance());
     	requires(Claw.getInstance());
     	requires(Angle.getInstance());

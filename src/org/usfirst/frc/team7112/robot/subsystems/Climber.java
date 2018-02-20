@@ -37,7 +37,7 @@ public class Climber extends Subsystem {
 		//sets the power to the rope motor
 	    public void setRopeMotorPower(double power) {
 	    	ropeFrontMotor.set(power);
-	    	((BaseMotorController)ropeBackMotor).set(ControlMode.Follower,Climber_Rope_FrontSpark);
+	    	//ropeBackMotor.set(ControlMode.Follower,Climber_Rope_FrontSpark);
 	    }
 	    
 	    //sets the power to the tape motors
