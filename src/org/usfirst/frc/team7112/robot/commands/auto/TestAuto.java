@@ -12,7 +12,7 @@ public class TestAuto extends CommandGroup {
 
     public TestAuto() {
     	requires(Chassis.getInstance());
-    	addSequential(new DriveByDistance(4));
+    	addSequential(new DriveByDistance(2));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

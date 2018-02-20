@@ -8,7 +8,6 @@
 package org.usfirst.frc.team7112.robot;
 
 import org.usfirst.frc.team7112.robot.commands.ResetDrivingEncoders;
-import org.usfirst.frc.team7112.robot.commands.SlowClimb;
 import org.usfirst.frc.team7112.robot.commands.angle.AngleClose;
 import org.usfirst.frc.team7112.robot.commands.angle.AngleOpen;
 import org.usfirst.frc.team7112.robot.commands.angle.StopAngle;
@@ -18,6 +17,7 @@ import org.usfirst.frc.team7112.robot.commands.claw.CloseClaw;
 import org.usfirst.frc.team7112.robot.commands.claw.OpenClaw;
 import org.usfirst.frc.team7112.robot.commands.claw.StopClaw;
 import org.usfirst.frc.team7112.robot.commands.climber.PullRope;
+import org.usfirst.frc.team7112.robot.commands.climber.SlowClimb;
 import org.usfirst.frc.team7112.robot.commands.climber.StopClimberMotors;
 import org.usfirst.frc.team7112.robot.commands.climber.StopTape;
 import org.usfirst.frc.team7112.robot.commands.climber.TapeClose;

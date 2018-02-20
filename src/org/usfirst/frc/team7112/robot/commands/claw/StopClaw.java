@@ -11,7 +11,7 @@ public class StopClaw extends Command {
 
     public StopClaw() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Claw.getInstance());
     }
 
     // Called just before this Command runs the first time

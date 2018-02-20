@@ -28,11 +28,13 @@ public class AngleOpen extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		SmartDashboard.putNumber("angleEncoder", Angle.getInstance().getCurrentAngle());
+		if(Angle.getInstance().getCurrentAngle()<goalAngle)
+			Angle.getInstance().setMotorPower(-Angle.getInstance().getSpeedModifier());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return (Angle.getInstance().getCurrentAngle() == goalAngle);
+		return (Angle.getInstance().getCurrentAngle() >= goalAngle);
 		 
 	}
 

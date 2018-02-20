@@ -1,6 +1,5 @@
 package org.usfirst.frc.team7112.robot.commands.claw;
 
-import org.usfirst.frc.team7112.robot.OI;
 import org.usfirst.frc.team7112.robot.subsystems.Claw;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -22,7 +21,7 @@ public class CloseClaw extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		Claw.getInstance().setMotorPower(OI.getInstance().get_LT_Axis()*Claw.getInstance().getSpeedmodifier());
+    		Claw.getInstance().setMotorPower(-Claw.getInstance().getSpeedmodifier());
     }
 
     // Make this return true when this Command no longer needs to run execute()
