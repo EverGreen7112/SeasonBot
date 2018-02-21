@@ -17,7 +17,7 @@ public class Claw extends Subsystem {
 	private static Claw instance;
     private SpeedController motor;
     private DigitalInput switchIn;
-    private static final double speedModifier = 0.6;
+    private static final double speedModifier = 0.8;
     
     
     private Claw(){

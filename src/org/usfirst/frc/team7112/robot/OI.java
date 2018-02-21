@@ -67,8 +67,8 @@ public class OI {
 	Button button12;
 
 	private OI(){
-		JS = new Joystick(1);
-		DrivingJS = new Joystick(0);
+		JS = new Joystick(0);
+		DrivingJS = new Joystick(1);
 
 		buttonX = new JoystickButton(JS, 1); //
 		buttonB = new JoystickButton(JS, 3); //
