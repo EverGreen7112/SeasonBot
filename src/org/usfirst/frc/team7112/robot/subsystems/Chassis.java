@@ -148,6 +148,11 @@ public class Chassis extends Subsystem {
 		leftMotors.setInverted(!leftMotors.getInverted());
 		rightMotors.setInverted(!rightMotors.getInverted());
 		isInverted = !isInverted;
+		if(driveMultiplier == 0.4){
+			driveMultiplier = 0.6;
+		}
+		else 
+			driveMultiplier = 0.4;
 	}
 
 	public static final void init() {

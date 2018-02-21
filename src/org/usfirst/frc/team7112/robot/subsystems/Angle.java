@@ -24,7 +24,8 @@ public class Angle extends Subsystem {
 	private DigitalInput microSwitch;
 	private static final double kSpeedModifier = 0.7; //temp
 	private static final double kDistancePerPulse = 0.0304878049; //degrees per round: 0.15697
-	private static final double kGoalAngle = 50; //temp
+	private static final double kGoalAngle = 70; //temp
+	private static final double kStartingAngle = 80;
 	
 	private Angle(){
 		//Talon
