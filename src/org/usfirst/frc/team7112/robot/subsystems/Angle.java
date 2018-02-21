@@ -22,14 +22,11 @@ public class Angle extends Subsystem {
 	private Encoder encoder;
 	private SpeedController motor;
 	private DigitalInput microSwitch;
-	private static final double kSpeedModifier = 0.82; //temp
+	private static final double kSpeedModifier = 0.86; //temp
 	private static final double kDistancePerPulse = 0.0304878049; //degrees per round: 0.15697
-<<<<<<< HEAD
 	private static final double kGoalAngle = 72; //temp
-=======
-	private static final double kGoalAngle = 70; //temp
 	private static final double kStartingAngle = 80;
->>>>>>> f64258556eadbf4fe50f112a30bd497f74bf4d54
+//>>>>>>> f64258556eadbf4fe50f112a30bd497f74bf4d54
 	
 	private Angle(){
 		//Talon
