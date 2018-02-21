@@ -47,7 +47,7 @@ public class Chassis extends Subsystem {
 	private DifferentialDrive Driver;
 	
 	private boolean isInverted = false;
-	private static final double kSlowDriveMultiplier = 0.3;
+	private static final double kSlowDriveMultiplier = 0.38;
 	private static final double kFastDriveMultiplier = 0.8;
 	private static double driveMultiplier;
 	
