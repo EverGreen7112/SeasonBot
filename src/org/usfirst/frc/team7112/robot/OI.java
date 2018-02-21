@@ -7,9 +7,10 @@
 
 package org.usfirst.frc.team7112.robot;
 
-import org.usfirst.frc.team7112.robot.commands.ResetDrivingEncoders;
+import org.usfirst.frc.team7112.robot.Utils.ResetDrivingEncoders;
 import org.usfirst.frc.team7112.robot.commands.angle.AngleClose;
 import org.usfirst.frc.team7112.robot.commands.angle.AngleOpen;
+import org.usfirst.frc.team7112.robot.commands.angle.OpenAngleStartingPoint;
 import org.usfirst.frc.team7112.robot.commands.angle.StopAngle;
 import org.usfirst.frc.team7112.robot.commands.chassis.ChangeSpeedModifier;
 import org.usfirst.frc.team7112.robot.commands.chassis.SwitchPerspectives;
@@ -42,6 +43,7 @@ public class OI {
 	Button buttonY;
 	Button buttonA;
 	Button buttonLT;
+	Button buttonStart;
 
 	/**
 	 * Boosts the robot's speed
@@ -77,6 +79,7 @@ public class OI {
 		buttonY = new JoystickButton(JS, 4);
 		buttonA = new JoystickButton(JS, 2);
 		buttonLT = new JoystickButton(JS, 7);
+		buttonStart = new JoystickButton(JS, 10);
 
 		buttonTrigger = new JoystickButton(DrivingJS, 1);
 		buttonThumb = new JoystickButton(DrivingJS, 2);
@@ -122,6 +125,8 @@ public class OI {
 		buttonLB.whenReleased(new StopClimberMotors());
 		buttonRB.whenPressed(new SlowClimb());
 		buttonRB.whenReleased(new StopClimberMotors());
+		buttonStart.whenPressed(new OpenAngleStartingPoint());
+		buttonStart.whenReleased(new StopAngle());
 	}
 
 	public Button Get_LB_Button(){
