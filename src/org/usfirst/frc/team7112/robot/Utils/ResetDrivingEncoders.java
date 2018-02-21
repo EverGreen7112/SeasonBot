@@ -1,15 +1,17 @@
-package org.usfirst.frc.team7112.robot.commands;
+package org.usfirst.frc.team7112.robot.Utils;
+
+import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class DoNothing extends Command {
+public class ResetDrivingEncoders extends Command {
 
-    public DoNothing() {
+    public ResetDrivingEncoders() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Chassis.getInstance());
     }
 
     // Called just before this Command runs the first time
@@ -18,11 +20,12 @@ public class DoNothing extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Chassis.getInstance().resetEncoders();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
