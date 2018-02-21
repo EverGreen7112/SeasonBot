@@ -28,9 +28,15 @@ public class ArcadeDrive extends Command {
     	}
     	else 
     		Chassis.getInstance().arcadeDrive(OI.getInstance().GetYAxis() * Chassis.getInstance().getDriveMultiplier(), OI.getInstance().GetXAxis() * Chassis.getInstance().getDriveMultiplier());
-    	if(Math.abs(OI.getInstance().GetRotateAxis())>0.5)
-    		Chassis.getInstance().arcadeDrive(0,OI.getInstance().GetRotateAxis() * Chassis.getInstance().getSlowDriveMultiplier());
-    	
+		if(Math.abs(OI.getInstance().GetRotateAxis())>0.5)
+		{
+			if(Chassis.getInstance().isInverted())
+			{
+				Chassis.getInstance().arcadeDrive(0,OI.getInstance().GetRotateAxis() * Chassis.getInstance().getSlowDriveMultiplier());
+			}
+			else
+				Chassis.getInstance().arcadeDrive(0,-OI.getInstance().GetRotateAxis() * Chassis.getInstance().getSlowDriveMultiplier());
+		}
     	SmartDashboard.putNumber("DriverSpeedMult", Chassis.getInstance().getDriveMultiplier());    	
     	SmartDashboard.putNumber("Encoder", Chassis.getInstance().getDistance());
     	SmartDashboard.putNumber("Y_Axis",OI.getInstance().GetYAxis());

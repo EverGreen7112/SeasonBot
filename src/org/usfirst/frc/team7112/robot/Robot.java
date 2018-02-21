@@ -1,18 +1,20 @@
 
 package org.usfirst.frc.team7112.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import edu.wpi.first.wpilibj.DriverStation;
 import org.usfirst.frc.team7112.robot.subsystems.Angle;
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 import org.usfirst.frc.team7112.robot.subsystems.Claw;
 import org.usfirst.frc.team7112.robot.subsystems.Climber;
 import org.usfirst.frc.team7112.robot.OI;
+import org.usfirst.frc.team7112.robot.Utils.SideChooser;
 import org.usfirst.frc.team7112.robot.commands.auto.TestAuto;
 
 /**
@@ -26,7 +28,6 @@ public class Robot extends IterativeRobot {
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
-
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.

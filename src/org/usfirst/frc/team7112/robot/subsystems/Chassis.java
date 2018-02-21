@@ -1,5 +1,7 @@
 package org.usfirst.frc.team7112.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.BaseMotorController;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -163,6 +165,16 @@ public class Chassis extends Subsystem {
 		return instance;
 	}
 
+	public void setLeftMotorsPower(double power){
+		((BaseMotorController)talon_FrontLeft).set(ControlMode.Velocity,power);
+		((BaseMotorController)talon_BackLeft).set(ControlMode.Follower, Chassis_Talon_FrontLeft);
+	}
+	
+	public void setRightMotorsPower(double power){
+		((BaseMotorController)talon_FrontRight).set(ControlMode.Velocity,power);
+		((BaseMotorController)talon_BackRight).set(ControlMode.Follower, Chassis_Talon_FrontRight);
+	}
+	
 	public void arcadeDrive(double forward, double side) {
 		Driver.arcadeDrive(forward, side);
 	}
