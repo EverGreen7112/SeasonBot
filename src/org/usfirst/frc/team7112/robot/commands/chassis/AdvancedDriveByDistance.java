@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class AdvancedDriveByDistance extends Command implements PIDOutput , PIDSource {
+public class AdvancedDriveByDistance extends Command implements PIDSource {
 
 	private int timesOnTarget=0;
 	private double Kp = 1, Ki = 0.3, Kd = 0; //for left motors
@@ -47,7 +47,6 @@ public class AdvancedDriveByDistance extends Command implements PIDOutput , PIDS
 		});
 	}
 
-
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		Chassis.getInstance().resetGyro();
@@ -63,11 +62,7 @@ public class AdvancedDriveByDistance extends Command implements PIDOutput , PIDS
 		drivePIDRight.setSetpoint(distance);
 		drivePIDRight.setOutputRange(-Chassis.getInstance().getDriveMultiplier(), Chassis.getInstance().getDriveMultiplier());
 		drivePIDRight.enable();
-		
-		currentError = drivePIDLeft.getSetpoint();
-		xDot = (currentError - errorBefore) / deltaTime;
 
-		u= xDot / radius;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -92,7 +87,10 @@ public class AdvancedDriveByDistance extends Command implements PIDOutput , PIDS
 		SmartDashboard.putNumber("Drive Right PID D", drivePIDRight.getD());
 		SmartDashboard.putNumber("EncoderRight", Chassis.getInstance().getDistanceR());
 		
-		
+		currentError = drivePIDLeft.getSetpoint() - Chassis.getInstance().getDistance();
+		xDot = (currentError - errorBefore) / deltaTime;
+		u = xDot / radius;
+		errorBefore = currentError; 
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -107,6 +105,7 @@ public class AdvancedDriveByDistance extends Command implements PIDOutput , PIDS
 
 	// Called once after isFinished returns true
 	protected void end() {
+		Chassis.getInstance().stopMotors();
 	}
 
 	// Called when another command which requires one or more of the same
@@ -130,7 +129,4 @@ public class AdvancedDriveByDistance extends Command implements PIDOutput , PIDS
 		return Chassis.getInstance().getDistance();
 	}
 
-	@Override
-	public void pidWrite(double output) {
-	}
 }

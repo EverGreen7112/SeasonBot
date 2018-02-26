@@ -67,6 +67,7 @@ public class DriveByDistance extends Command implements PIDOutput , PIDSource {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Chassis.getInstance().stopMotors();
     }
 
     // Called when another command which requires one or more of the same

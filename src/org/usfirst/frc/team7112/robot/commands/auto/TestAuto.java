@@ -1,5 +1,6 @@
 package org.usfirst.frc.team7112.robot.commands.auto;
 
+import org.usfirst.frc.team7112.robot.commands.chassis.AdvancedDriveByDistance;
 import org.usfirst.frc.team7112.robot.commands.chassis.DriveByDistance;
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 
