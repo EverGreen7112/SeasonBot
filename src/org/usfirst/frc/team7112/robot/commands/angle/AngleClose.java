@@ -1,13 +1,9 @@
 package org.usfirst.frc.team7112.robot.commands.angle;
-
 import org.usfirst.frc.team7112.robot.subsystems.Angle;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class AngleClose extends Command {
 
 	public AngleClose() {
@@ -16,9 +12,7 @@ public class AngleClose extends Command {
 	}
 
 	// Called just before this Command runs the first time
-	protected void initialize() {
-
-	}
+	protected void initialize() {}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {

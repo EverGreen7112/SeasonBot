@@ -1,12 +1,8 @@
 package org.usfirst.frc.team7112.robot.commands.claw;
-
 import org.usfirst.frc.team7112.robot.subsystems.Claw;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class AutoOpenClaw extends Command {
 
     public AutoOpenClaw() {
@@ -15,8 +11,7 @@ public class AutoOpenClaw extends Command {
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+    protected void initialize() {}
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
@@ -36,6 +31,6 @@ public class AutoOpenClaw extends Command {
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+    protected void interrupted() {}
+
 }

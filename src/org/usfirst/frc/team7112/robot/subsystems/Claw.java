@@ -21,22 +21,26 @@ public class Claw extends Subsystem {
     
     
     private Claw(){
+    	//------Talons------//
     	motor = new WPI_TalonSRX(Claw_Talon);
+    	
+    	//------MicroSwitches------//
     	switchIn = new DigitalInput(Claw_MicroSwitch_In);
     }
     
 
-    //sets the power to the motor
+    //Sets motor's power
     public void setMotorPower(double Power) {
     	motor.set(Power);
     }
+    
     //Initiates the Pliers
     public static final void init() {
 		instance = new Claw();    	
 	}
 
     /**
-	 * @return the speedmodifier
+	 * @returns speed modifier
 	 */
 	public double getSpeedmodifier() {
 		return speedModifier;
@@ -47,12 +51,16 @@ public class Claw extends Subsystem {
     	motor.stopMotor();
     }
 
-    //returns true is the InSwitch is pressed
+    /**
+     * @returns true is the InSwitch is pressed
+     */
     public boolean switchPressed_Open(){
     	return switchIn.get();
     }
 
-    //returns the instance of the claw
+    /**
+     * @returns the instance of the claw
+     */
 	public static final Claw getInstance() {
 		return instance;
 	}
@@ -60,5 +68,5 @@ public class Claw extends Subsystem {
     public void initDefaultCommand() {
     	setDefaultCommand(new UseClaw());
     }
-}
 
+}

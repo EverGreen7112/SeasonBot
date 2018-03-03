@@ -1,5 +1,6 @@
 package org.usfirst.frc.team7112.robot.commands.auto;
 
+import org.usfirst.frc.team7112.robot.commands.chassis.AdvancedDriveByDistance;
 import org.usfirst.frc.team7112.robot.commands.chassis.DriveByDistance;
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 
@@ -12,7 +13,7 @@ public class TestAuto extends CommandGroup {
 
     public TestAuto() {
     	requires(Chassis.getInstance());
-    	addSequential(new DriveByDistance(2));
+    	addSequential(new AdvancedDriveByDistance(2));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

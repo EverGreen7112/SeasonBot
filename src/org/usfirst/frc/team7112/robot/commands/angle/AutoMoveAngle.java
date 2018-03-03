@@ -1,18 +1,14 @@
 package org.usfirst.frc.team7112.robot.commands.angle;
-
 import org.usfirst.frc.team7112.robot.subsystems.Angle;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class AutoMoveAngle extends Command {
 
 	private int goalAngle;
 	/**
-	 * true is posotive (up), false is negitive (down)
+	 * true is positive (up), false is negative (down)
 	 */
 	private boolean direction; 
     public AutoMoveAngle(int angle) {
@@ -52,6 +48,6 @@ public class AutoMoveAngle extends Command {
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+    protected void interrupted() {}
+
 }

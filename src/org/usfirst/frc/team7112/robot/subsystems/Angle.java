@@ -13,9 +13,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- *
- */
+
 public class Angle extends Subsystem {
 
 	private static Angle instance;
@@ -26,7 +24,6 @@ public class Angle extends Subsystem {
 	private static final double kDistancePerPulse = 0.0304878049; //degrees per round: 0.15697
 	private static final double kGoalAngle = 72; //temp
 	private static final double kStartingAngle = 80;
-//>>>>>>> f64258556eadbf4fe50f112a30bd497f74bf4d54
 	
 	private Angle(){
 		//Talon
@@ -40,15 +37,15 @@ public class Angle extends Subsystem {
 	}
 	
 	/**
-	 * Returns the state of the micro switch
-	 * @return True if the switche is pressed, otherwise will return false
+	 * @Returns the state of the micro switch
+	 * @returns True if the switch is pressed, otherwise will return false
 	 */
 	public boolean isPressed(){
 		return microSwitch.get();
 	}
 	
 	/**
-	 * Sets the power to the Angle motor
+	 * @Sets the power to the Angle motor
 	 * @param Power - the power: between 1 to -1
 	 */
     public void setMotorPower(double Power) {
@@ -56,13 +53,17 @@ public class Angle extends Subsystem {
     }
     
     /**
-     * returns the current angle by the encoder
-     * @return the current angle
+     * @returns the current angle by the encoder
+     * @returns the current angle
      */
     public double getCurrentAngle(){
     	return encoder.getDistance();
     }
     
+    /**
+     * @returns the direction of the angle, UP or Down(+ or -)
+     */
+
     public boolean getCurrentDirection(){
     	return encoder.getDirection();
     }
@@ -75,23 +76,21 @@ public class Angle extends Subsystem {
     }
    
     /**
-     * returns the speed modifier
-     * @return the speed modifier
+     * @returns speed modifier
      */
 	public double getSpeedModifier() {
 		return kSpeedModifier;
 	}
 
 	/**
-	 * Stops the angle motor
+	 * @Stops angle's motor
 	 */
 	public void stopMotor(){
 		motor.stopMotor();
 	}
 	
 	/**
-	 * returns the goal angle
-	 * @return the goal angle
+	 * @returns angle's goal
 	 */
 	public double getGoalAngle() {
 		return kGoalAngle;

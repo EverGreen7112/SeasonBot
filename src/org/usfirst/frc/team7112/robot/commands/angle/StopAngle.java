@@ -1,12 +1,7 @@
 package org.usfirst.frc.team7112.robot.commands.angle;
-
 import org.usfirst.frc.team7112.robot.subsystems.Angle;
-
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class StopAngle extends Command {
 
     public StopAngle() {
@@ -15,8 +10,7 @@ public class StopAngle extends Command {
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+    protected void initialize(){}
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
@@ -36,4 +30,5 @@ public class StopAngle extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+
 }

@@ -1,5 +1,4 @@
 package org.usfirst.frc.team7112.robot.commands.chassis;
-
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 
 import edu.wpi.first.wpilibj.PIDController;
@@ -9,9 +8,6 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class AdvancedDriveByDistance extends Command implements PIDOutput , PIDSource {
 
 	private int timesOnTarget=0;
@@ -23,7 +19,6 @@ public class AdvancedDriveByDistance extends Command implements PIDOutput , PIDS
 	private double xDot;
 	private double u = 0, errorBefore = 0, currentError;
 
-	
 	private double distance;
 	private PIDController drivePIDLeft;
 	private PIDController drivePIDRight;
@@ -92,7 +87,6 @@ public class AdvancedDriveByDistance extends Command implements PIDOutput , PIDS
 		SmartDashboard.putNumber("Drive Right PID D", drivePIDRight.getD());
 		SmartDashboard.putNumber("EncoderRight", Chassis.getInstance().getDistanceR());
 		
-		
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -106,8 +100,7 @@ public class AdvancedDriveByDistance extends Command implements PIDOutput , PIDS
 	}
 
 	// Called once after isFinished returns true
-	protected void end() {
-	}
+	protected void end() {}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
@@ -116,9 +109,7 @@ public class AdvancedDriveByDistance extends Command implements PIDOutput , PIDS
 	}
 
 	@Override
-	public void setPIDSourceType(PIDSourceType pidSource) {
-
-	}
+	public void setPIDSourceType(PIDSourceType pidSource) {}
 
 	@Override
 	public PIDSourceType getPIDSourceType() {
@@ -131,6 +122,5 @@ public class AdvancedDriveByDistance extends Command implements PIDOutput , PIDS
 	}
 
 	@Override
-	public void pidWrite(double output) {
-	}
+	public void pidWrite(double output) {}
 }

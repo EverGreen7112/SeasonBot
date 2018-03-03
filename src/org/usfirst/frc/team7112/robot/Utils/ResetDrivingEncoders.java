@@ -1,12 +1,12 @@
 package org.usfirst.frc.team7112.robot.Utils;
-
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *This command resets encoders date
  */
+
 public class ResetDrivingEncoders extends Command {
 
     public ResetDrivingEncoders() {

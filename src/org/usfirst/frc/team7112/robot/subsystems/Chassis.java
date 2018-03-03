@@ -30,6 +30,7 @@ import static org.usfirst.frc.team7112.robot.RobotMap.Chassis_Encoder_Right_B;
  */
 public class Chassis extends Subsystem {
 
+	//------Talons------//
 	private SpeedController talon_FrontLeft;
 	private SpeedController talon_FrontRight;
 	private SpeedController talon_BackLeft;
@@ -39,7 +40,8 @@ public class Chassis extends Subsystem {
 	private SpeedControllerGroup rightMotors;
 	
 	private static Chassis instance;
-		
+	
+	//------Encoders------//
 	private Encoder encLeft, encRight;
 	
 	private ADXRS450_Gyro gyro;
@@ -62,8 +64,10 @@ public class Chassis extends Subsystem {
 		encRight.setDistancePerPulse(kDistancePerPulse);
 		encLeft.reset();
 		encRight.reset();
+
 		//gyro
 		gyro = new ADXRS450_Gyro(); // temp
+		
 		//Talons
 		talon_FrontLeft = new WPI_TalonSRX(Chassis_Talon_FrontLeft);
 		talon_FrontRight = new WPI_TalonSRX(Chassis_Talon_FrontRight);
@@ -75,16 +79,22 @@ public class Chassis extends Subsystem {
 		driveMultiplier = 0.6;
 	}
 	
+	/**
+	 * @returns drive's multiplier
+	 */
 	public double getDriveMultiplier() {
 		return driveMultiplier;
 	}
 
+	/**
+	* @returns slow drive's multiplier
+	 */
 	public double getSlowDriveMultiplier() {
 		return kSlowDriveMultiplier;
 	}
 
 	/**
-	 * @return the kfastdrivemultiplier
+	 * @return fast drive's multiplier
 	 */
 	public double getFastDriveMultiplier() {
 		return kFastDriveMultiplier;
@@ -94,6 +104,9 @@ public class Chassis extends Subsystem {
 		return isInverted;
 	}
 
+	/**
+	* @param mult - Sets drive's multiplier
+	 */
 	public void setDriveMultiplier(double mult) {
 		driveMultiplier = mult;
 	}
@@ -103,49 +116,48 @@ public class Chassis extends Subsystem {
 		return (encLeft.getDistance() + encRight.getDistance()) / 2; //maybe + instead of -
 	}
 
+	/**
+	* @returns robot's speed
+	*/
 	public double getSpeed() {
 		return (encLeft.getRate() + encRight.getRate()) / 2;// maybe + instead of -
 	}
 	
 	/**
-	 * Returns the current distance that the right side motors traveled via the encoder
-	 * @return The current distance that the right encoder recorded
+	 * @returns The current distance that the right encoder recorded
 	 */
 	public double getDistanceR() {
 		return encRight.getDistance();
 	}
 	
 	/**
-	 * Returns the current distance that the left side motors traveled via the encoder
-	 * @return The current distance that the left encoder recorded
+	 * @returns The current distance that the left encoder recorded
 	 */
 	public double getDistanceL() {
 		return encLeft.getDistance();
 	}
 	
 	/**
-	 * Returns the angle that the robot is at since the gyro was reset
-	 * @return The angle that the robot is at
+	 * @returns the angle that the robot's at
 	 */
 	public double getAngle() {
 		return gyro.getAngle();
 	}
 	
-	/**
-	 * Resets the driving encoders
-	 */
+	
+	//Resets the driving encoders
 	public void resetEncoders() {
 		encLeft.reset();
 		encRight.reset();
 	}
 	
-	/**
-	 * Resets the gyro
-	 */
+	
+	//Resets gyro
 	public void resetGyro() {
 		gyro.reset();
 	}
 	
+	//Chances drive's perspective, now BACK is Forward and the opposite
 	public void switchPerspectives(){
 		leftMotors.setInverted(!leftMotors.getInverted());
 		rightMotors.setInverted(!rightMotors.getInverted());
@@ -165,11 +177,17 @@ public class Chassis extends Subsystem {
 		return instance;
 	}
 
+	/**
+	* @param power - Sets left motors's speed
+	 */
 	public void setLeftMotorsPower(double power){
 		((BaseMotorController)talon_FrontLeft).set(ControlMode.Velocity,power);
 		((BaseMotorController)talon_BackLeft).set(ControlMode.Follower, Chassis_Talon_FrontLeft);
 	}
 	
+	/**
+	* @param power - Sets right motors's speed
+	 */
 	public void setRightMotorsPower(double power){
 		((BaseMotorController)talon_FrontRight).set(ControlMode.Velocity,power);
 		((BaseMotorController)talon_BackRight).set(ControlMode.Follower, Chassis_Talon_FrontRight);
@@ -186,8 +204,6 @@ public class Chassis extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		setDefaultCommand(new ArcadeDrive());
-
 	}
-
 
 }

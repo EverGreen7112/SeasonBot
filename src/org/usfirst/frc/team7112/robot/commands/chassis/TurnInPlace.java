@@ -1,5 +1,4 @@
 package org.usfirst.frc.team7112.robot.commands.chassis;
-
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 
 import edu.wpi.first.wpilibj.PIDController;
@@ -9,9 +8,6 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class TurnInPlace extends Command implements PIDOutput , PIDSource {
 
 	private int timesOnTarget=0;
@@ -60,8 +56,7 @@ public class TurnInPlace extends Command implements PIDOutput , PIDSource {
     }
 
     // Called once after isFinished returns true
-    protected void end() {
-    }
+    protected void end() {}
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
@@ -70,9 +65,7 @@ public class TurnInPlace extends Command implements PIDOutput , PIDSource {
     }
 
 	@Override
-	public void setPIDSourceType(PIDSourceType pidSource) {
-		
-	}
+	public void setPIDSourceType(PIDSourceType pidSource) {}
 
 	@Override
 	public PIDSourceType getPIDSourceType() {
@@ -80,6 +73,9 @@ public class TurnInPlace extends Command implements PIDOutput , PIDSource {
 	}
 
 	@Override
+	/**
+	 * @returns Angle's current angle
+	 */
 	public double pidGet() {
 		return Chassis.getInstance().getAngle();
 	}
@@ -88,4 +84,5 @@ public class TurnInPlace extends Command implements PIDOutput , PIDSource {
 	public void pidWrite(double output) {
 		Chassis.getInstance().arcadeDrive(0,output);		
 	}
+
 }

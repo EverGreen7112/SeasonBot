@@ -12,7 +12,10 @@ import org.usfirst.frc.team7112.robot.commands.angle.AngleClose;
 import org.usfirst.frc.team7112.robot.commands.angle.AngleOpen;
 import org.usfirst.frc.team7112.robot.commands.angle.OpenAngleStartingPoint;
 import org.usfirst.frc.team7112.robot.commands.angle.StopAngle;
+import org.usfirst.frc.team7112.robot.commands.auto.TestAuto;
+import org.usfirst.frc.team7112.robot.commands.chassis.AdvancedDriveByDistance;
 import org.usfirst.frc.team7112.robot.commands.chassis.ChangeSpeedModifier;
+import org.usfirst.frc.team7112.robot.commands.chassis.DriveByDistance;
 import org.usfirst.frc.team7112.robot.commands.chassis.SwitchPerspectives;
 import org.usfirst.frc.team7112.robot.commands.claw.CloseClaw;
 import org.usfirst.frc.team7112.robot.commands.claw.OpenClaw;
@@ -71,7 +74,8 @@ public class OI {
 	private OI(){
 		JS = new Joystick(0);
 		DrivingJS = new Joystick(1);
-
+		
+		
 		buttonX = new JoystickButton(JS, 1); //
 		buttonB = new JoystickButton(JS, 3); //
 		buttonLB = new JoystickButton(JS, 5); //
@@ -80,7 +84,6 @@ public class OI {
 		buttonA = new JoystickButton(JS, 2);
 		buttonLT = new JoystickButton(JS, 7);
 		buttonStart = new JoystickButton(JS, 10);
-
 		buttonTrigger = new JoystickButton(DrivingJS, 1);
 		buttonThumb = new JoystickButton(DrivingJS, 2);
 		button5 = new JoystickButton(DrivingJS, 5);
@@ -94,41 +97,97 @@ public class OI {
 	}
 
 	public void BindKeys(){
-		//DrivingJS key bindings
+		/*DrivingJS key bindings*/
+		
+		//If pressed increases robot's speed
 		buttonTrigger.whenPressed(new ChangeSpeedModifier(Chassis.getInstance().getFastDriveMultiplier()));
+		//When released return robo's speed to normal
 		buttonTrigger.whenReleased(new ChangeSpeedModifier(Chassis.getInstance().getDriveMultiplier()));
+		
+		//If pressed decreases robot's speed
 		buttonThumb.whenPressed(new ChangeSpeedModifier(Chassis.getInstance().getSlowDriveMultiplier()));
+		//When released return robo's speed to normal
 		buttonThumb.whenReleased(new ChangeSpeedModifier(Chassis.getInstance().getDriveMultiplier()));
+		
+		//If pressed closes claw on the CUBE
 		button5.whenPressed(new CloseClaw());
+		//When released stops claw movement
 		button5.whenReleased(new StopClaw());
+		
+		//If pressed opens claw
 		button6.whenPressed(new OpenClaw());
+		//When released stops claw movement
 		button6.whenReleased(new StopClaw());
+		
+		//If pressed brings tapes down
 		button7.whenPressed(new TapeClose());
+		//When released stops to pull the tapes
 		button7.whenReleased(new StopTape());
+		
+		//If pressed brings tapes up
 		button8.whenPressed(new TapeOpen());
+		//When released stops to push the tapes
 		button8.whenReleased(new StopTape());
+		
+		//If pressed switches perspective, Now BACK is FOWARD and the opposite
 		button12.whenPressed(new SwitchPerspectives());
+		
+		//If pressed resets encoders information
 		button11.whenPressed(new ResetDrivingEncoders());
+		
+		//If pressed activate drum
 		button9.whenPressed(new PullRope());
+		//When released stops drum
 		button9.whenReleased(new StopClimberMotors());
+		
+		//Drive 3Meters Autonomous
+		button10.whenPressed(new DriveByDistance(3.04));
 
 		//OperatorJS key bindings
-		buttonY.whenPressed(new AngleOpen());
-		buttonY.whenReleased(new StopAngle());
-		buttonA.whenPressed(new AngleClose());
-		buttonA.whenReleased(new StopAngle());
-		buttonX.whenPressed(new OpenClaw());
-		buttonX.whenReleased(new StopClaw());
-		buttonB.whenPressed(new CloseClaw());
-		buttonB.whenReleased(new StopClaw());
-		buttonLB.whenPressed(new PullRope());
-		buttonLB.whenReleased(new StopClimberMotors());
-		buttonRB.whenPressed(new SlowClimb());
-		buttonRB.whenReleased(new StopClimberMotors());
+		
+		
+		
+		//Brings up the angle to the start point. DO IT BEFORE EVEREY ROUND!!
 		buttonStart.whenPressed(new OpenAngleStartingPoint());
+		//Stops angle movement
 		buttonStart.whenReleased(new StopAngle());
+		
+		//Brings up the angle to the switches high
+		buttonY.whenPressed(new AngleOpen());
+		//Stops angle movement
+		buttonY.whenReleased(new StopAngle());
+		
+		//Brings angle down
+		buttonA.whenPressed(new AngleClose());
+		//Stops angle movement
+		buttonA.whenReleased(new StopAngle());
+		
+		//Opens the claw
+		buttonX.whenPressed(new OpenClaw());
+		//Stops claw opening
+		buttonX.whenReleased(new StopClaw());
+		
+		//Closes the claw and catches the cube 
+		buttonB.whenPressed(new CloseClaw());
+		//Stops claw movement
+		buttonB.whenReleased(new StopClaw());
+		
+		//Starts drum movement, a FAST movement.
+		buttonLB.whenPressed(new PullRope());
+		//Stops drum movement
+		buttonLB.whenReleased(new StopClimberMotors());
+		
+		//Starts drum movement, a SLOW movement.
+		buttonRB.whenPressed(new SlowClimb());
+		//Stops drum movement
+		buttonRB.whenReleased(new StopClimberMotors());
+		
+		
 	}
-
+	/**
+	 * @returns buttonTrigger
+	 */
+	
 	public Button Get_LB_Button(){
 		return buttonLB;
 	}
@@ -137,148 +196,146 @@ public class OI {
 		return buttonRB;
 	}
 
-	/**
-	 * @return the buttonTrigger
-	 */
+	
 	public Button getButtonTrigger() {
 		return buttonTrigger;
 	}
 
 	/**
-	 * @return the buttonThumb
+	 * @returns buttonThumb
 	 */
 	public Button getButtonThumb() {
 		return buttonThumb;
 	}
 
 	/**
-	 * @return the button5
+	 * @returns button5
 	 */
 	public Button getButton5() {
 		return button5;
 	}
 
 	/**
-	 * @return the button6
+	 * @returns button6
 	 */
 	public Button getButton6() {
 		return button6;
 	}
 
 	/**
-	 * @return the button7
+	 * @returns button7
 	 */
 	public Button getButton7() {
 		return button7;
 	}
 
 	/**
-	 * @return the button8
+	 * @returns button8
 	 */
 	public Button getButton8() {
 		return button8;
 	}
 
 	/**
-	 * @return the button9
+	 * @returns button9
 	 */
 	public Button getButton9() {
 		return button9;
 	}
 
 	/**
-	 * @return the button10
+	 * @returns button10
 	 */
 	public Button getButton10() {
 		return button10;
 	}
 
 	/**
-	 * @return the button11
+	 * @returns button11
 	 */
 	public Button getButton11() {
 		return button11;
 	}
 
 	/**
-	 * @return the button12
+	 * @returns button12
 	 */
 	public Button getButton12() {
 		return button12;
 	}
 
 	/**
-	 * @return JS X Axis
+	 * @returns JS X Axis
 	 */
 	public double Get_X_Axis() {
 		return JS.getRawAxis(0);
 	}
 
 	/**
-	 * @return JS Y Axis
+	 * @returns JS Y Axis
 	 */
 	public double Get_Y_Axis() {
 		return JS.getRawAxis(1);
 	}
 
 	/**
-	 * @return the current state of JS Left Trigger
+	 * @returns current state of JS Left Trigger
 	 */
 	public double get_LT_Axis(){
 		return JS.getRawAxis(2);
 	}
 
 	/**
-	 * @return the current state of JS Right Trigger
+	 * @returns current state of JS Right Trigger
 	 */
 	public double get_RT_Axis(){
 		return JS.getRawAxis(3);
 	}
 
 	/**
-	 * @return DrivingJS X Axis
+	 * @returns DrivingJS X Axis
 	 */
 	public double GetXAxis() {
 		return DrivingJS.getRawAxis(0);
 	}
 
 	/**
-	 * @return DrivingJS Y Axis
+	 * @returns DrivingJS Y Axis
 	 */
 	public double GetYAxis() {
 		return -DrivingJS.getRawAxis(1);
 	}
 
 	/**
-	 * @return DrivingJS Z Axis (rotate)
+	 * @returns DrivingJS Z Axis (rotate)
 	 */
 	public double GetRotateAxis(){
 		return DrivingJS.getRawAxis(2);
 	}
 
 	/**
-	 * @return the current state of the DrivingJS POV
+	 * @returns current state of the DrivingJS POV
 	 */
 	public int GetDrivePOV(){
 		return DrivingJS.getPOV(0);
 	}
 
 	/**
-	 * @return the current state of the JS POV
+	 * @returns current state of the JS POV
 	 */
 	public int GetPOV(){
 		return JS.getPOV(0);
 	}
 
 	/**
-	 * @return the X Button
+	 * @returns X Button
 	 */
 	public Button GetXButton(){
 		return buttonX;
 	}
 
 	/**
-	 * @return the B Button
+	 * @returns B Button
 	 */
 	public Button GetBButton(){
 		return buttonB;
