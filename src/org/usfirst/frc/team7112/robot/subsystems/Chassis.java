@@ -157,7 +157,13 @@ public class Chassis extends Subsystem {
 		gyro.reset();
 	}
 	
+<<<<<<< HEAD
 	//Chances drive's perspective, now BACK is Forward and the opposite
+=======
+	/**
+	 * Inverts the perspective point of the robot, and while driving towards the flat side of the robot the drive multiplier is lower.
+	 */
+>>>>>>> 72a419a4531bab5607ff9944fec1d02363a1b48d
 	public void switchPerspectives(){
 		leftMotors.setInverted(!leftMotors.getInverted());
 		rightMotors.setInverted(!rightMotors.getInverted());
@@ -167,6 +173,16 @@ public class Chassis extends Subsystem {
 		}
 		else 
 			driveMultiplier = 0.5;
+	}
+	
+	/**
+	 * Stops the motors of the chassis
+	 */
+	public void stopMotors(){
+		talon_BackLeft.stopMotor();
+		talon_BackRight.stopMotor();
+		talon_FrontLeft.stopMotor();
+		talon_FrontRight.stopMotor();
 	}
 
 	public static final void init() {

@@ -1,4 +1,5 @@
 package org.usfirst.frc.team7112.robot.commands.chassis;
+
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 
 import edu.wpi.first.wpilibj.PIDController;
@@ -8,14 +9,10 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-<<<<<<< HEAD
-public class AdvancedDriveByDistance extends Command implements PIDOutput , PIDSource {
-=======
 /**
  *
  */
-public class AdvancedDriveByDistance extends Command implements PIDSource {
->>>>>>> 72a419a4531bab5607ff9944fec1d02363a1b48d
+public class AdvancedTurnInPlace extends Command implements PIDSource {
 
 	private int timesOnTarget=0;
 	private double Kp = 1, Ki = 0.3, Kd = 0; //for left motors
@@ -25,12 +22,13 @@ public class AdvancedDriveByDistance extends Command implements PIDSource {
 	private double deltaTime = 0.005;
 	private double xDot;
 	private double u = 0, errorBefore = 0, currentError;
-
+	private double L = 0.55421; // distance between wheels
+	
 	private double distance;
 	private PIDController drivePIDLeft;
 	private PIDController drivePIDRight;
 
-	public AdvancedDriveByDistance(double distance){
+	public AdvancedTurnInPlace(double distance){
 		requires(Chassis.getInstance());
 		this.distance = distance;
 		drivePIDLeft = new PIDController(Kp, Ki, Kd, this, new PIDOutput() {
@@ -44,7 +42,7 @@ public class AdvancedDriveByDistance extends Command implements PIDSource {
 
 			@Override
 			public void pidWrite(double output) {
-				Chassis.getInstance().setRightMotorsPower(u + output);
+				Chassis.getInstance().setRightMotorsPower(-(u + output));
 			}
 		});
 	}
@@ -70,12 +68,12 @@ public class AdvancedDriveByDistance extends Command implements PIDSource {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		drivePIDLeft.setPID(
-				SmartDashboard.getNumber("Drive Left PID P", 0),
+				SmartDashboard.getNumber("Drive Left PID P", 1),
 				SmartDashboard.getNumber("Drive Left PID I", 0), 
 				SmartDashboard.getNumber("Drive Left PID D", 0));
 
 		drivePIDRight.setPID(
-				SmartDashboard.getNumber("Drive PID P", 0),
+				SmartDashboard.getNumber("Drive PID P", 1),
 				SmartDashboard.getNumber("Drive PID I", 0), 
 				SmartDashboard.getNumber("Drive PID D", 0));
 
@@ -89,13 +87,10 @@ public class AdvancedDriveByDistance extends Command implements PIDSource {
 		SmartDashboard.putNumber("Drive Right PID D", drivePIDRight.getD());
 		SmartDashboard.putNumber("EncoderRight", Chassis.getInstance().getDistanceR());
 		
-<<<<<<< HEAD
-=======
 		currentError = drivePIDLeft.getSetpoint() - Chassis.getInstance().getDistance();
 		xDot = (currentError - errorBefore) / deltaTime;
 		u = xDot / radius;
 		errorBefore = currentError; 
->>>>>>> 72a419a4531bab5607ff9944fec1d02363a1b48d
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -109,13 +104,9 @@ public class AdvancedDriveByDistance extends Command implements PIDSource {
 	}
 
 	// Called once after isFinished returns true
-<<<<<<< HEAD
-	protected void end() {}
-=======
 	protected void end() {
 		Chassis.getInstance().stopMotors();
 	}
->>>>>>> 72a419a4531bab5607ff9944fec1d02363a1b48d
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
@@ -124,7 +115,9 @@ public class AdvancedDriveByDistance extends Command implements PIDSource {
 	}
 
 	@Override
-	public void setPIDSourceType(PIDSourceType pidSource) {}
+	public void setPIDSourceType(PIDSourceType pidSource) {
+
+	}
 
 	@Override
 	public PIDSourceType getPIDSourceType() {
@@ -136,9 +129,4 @@ public class AdvancedDriveByDistance extends Command implements PIDSource {
 		return Chassis.getInstance().getDistance();
 	}
 
-<<<<<<< HEAD
-	@Override
-	public void pidWrite(double output) {}
-=======
->>>>>>> 72a419a4531bab5607ff9944fec1d02363a1b48d
 }
