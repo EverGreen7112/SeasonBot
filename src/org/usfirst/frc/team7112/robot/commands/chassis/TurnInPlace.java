@@ -40,13 +40,13 @@ public class TurnInPlace extends Command implements PIDOutput , PIDSource {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	drivePID.setPID(
-    			SmartDashboard.getNumber("Drive PID P", 0),
+    			SmartDashboard.getNumber("Drive PID P", 1),
     			SmartDashboard.getNumber("Drive PID I", 0), 
     			SmartDashboard.getNumber("Drive PID D", 0));
     	SmartDashboard.putNumber("Drive PID P", drivePID.getP());
 		SmartDashboard.putNumber("Drive PID I", drivePID.getI());
 		SmartDashboard.putNumber("Drive PID D", drivePID.getD());
-		SmartDashboard.putNumber("Encoder", Chassis.getInstance().getDistance());
+		SmartDashboard.putNumber("Gyro", Chassis.getInstance().getAngle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -61,6 +61,7 @@ public class TurnInPlace extends Command implements PIDOutput , PIDSource {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Chassis.getInstance().stopMotors();
     }
 
     // Called when another command which requires one or more of the same

@@ -1,21 +1,17 @@
 
 package org.usfirst.frc.team7112.robot;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.DriverStation;
 import org.usfirst.frc.team7112.robot.subsystems.Angle;
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 import org.usfirst.frc.team7112.robot.subsystems.Claw;
 import org.usfirst.frc.team7112.robot.subsystems.Climber;
 import org.usfirst.frc.team7112.robot.OI;
-import org.usfirst.frc.team7112.robot.Utils.SideChooser;
-import org.usfirst.frc.team7112.robot.commands.auto.TestAuto;
+import org.usfirst.frc.team7112.robot.Utils.MatchDataProcessor;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -39,7 +35,7 @@ public class Robot extends IterativeRobot {
 		Claw.init();
 		Climber.init();
 		Angle.init();
-		autonomousCommand = new TestAuto();
+		MatchDataProcessor.getInstance().robotInit();
 	}
 	
 	/**
@@ -80,8 +76,7 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
-			autonomousCommand.start();
+		MatchDataProcessor.getInstance().autonomusInit();
 	}
 
 	/**
