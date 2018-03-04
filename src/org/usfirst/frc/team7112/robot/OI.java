@@ -17,6 +17,8 @@ import org.usfirst.frc.team7112.robot.commands.chassis.AdvancedDriveByDistance;
 import org.usfirst.frc.team7112.robot.commands.chassis.ChangeSpeedModifier;
 import org.usfirst.frc.team7112.robot.commands.chassis.DriveByDistance;
 import org.usfirst.frc.team7112.robot.commands.chassis.SwitchPerspectives;
+import org.usfirst.frc.team7112.robot.commands.chassis.TurnInPlace;
+import org.usfirst.frc.team7112.robot.commands.claw.AutoOpenClaw;
 import org.usfirst.frc.team7112.robot.commands.claw.CloseClaw;
 import org.usfirst.frc.team7112.robot.commands.claw.OpenClaw;
 import org.usfirst.frc.team7112.robot.commands.claw.StopClaw;
@@ -141,7 +143,7 @@ public class OI {
 		button9.whenReleased(new StopClimberMotors());
 		
 		//Drive 3Meters Autonomous
-		button10.whenPressed(new DriveByDistance(3.04));
+		button10.whenPressed(new AutoOpenClaw());
 
 		//OperatorJS key bindings
 		

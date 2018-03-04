@@ -1,4 +1,5 @@
 package org.usfirst.frc.team7112.robot.commands.chassis;
+import org.usfirst.frc.team7112.robot.commands.climber.SlowClimb;
 import org.usfirst.frc.team7112.robot.subsystems.Chassis;
 
 import edu.wpi.first.wpilibj.PIDController;
@@ -11,64 +12,60 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class TurnInPlace extends Command implements PIDOutput , PIDSource {
 
 	private int timesOnTarget=0;
-	private double Kp = 1, Ki = 0.3, Kd = 0;
+	private double Kp = 1, Ki = 0, Kd = 0;
 	private double angle;
 	private PIDController drivePID;
 	private final double P2 = 2.0 / 90.0; //maybe change
-	
+
 	public TurnInPlace(double angle){
 		requires(Chassis.getInstance());
 		this.angle = angle;
 		drivePID = new PIDController(Kp, Ki, Kd, this, this);
 	}
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
+	// Called just before this Command runs the first time
+	protected void initialize() {
 		Chassis.getInstance().resetGyro();
 		Chassis.getInstance().resetEncoders();
-    	drivePID.reset();
-		drivePID.setAbsoluteTolerance(0.15);
+		drivePID.reset();
+		drivePID.setAbsoluteTolerance(1);
 		drivePID.setSetpoint(angle);
-		drivePID.setOutputRange(-Chassis.getInstance().getDriveMultiplier(), Chassis.getInstance().getDriveMultiplier());
+		drivePID.setOutputRange(-Chassis.getInstance().getSlowDriveMultiplier(),Chassis.getInstance().getSlowDriveMultiplier());
 		drivePID.enable();
-    }
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	drivePID.setPID(
-    			SmartDashboard.getNumber("Drive PID P", 1),
-    			SmartDashboard.getNumber("Drive PID I", 0), 
-    			SmartDashboard.getNumber("Drive PID D", 0));
-    	SmartDashboard.putNumber("Drive PID P", drivePID.getP());
-		SmartDashboard.putNumber("Drive PID I", drivePID.getI());
-		SmartDashboard.putNumber("Drive PID D", drivePID.getD());
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		drivePID.setPID(
+				SmartDashboard.getNumber("PID Controller Turn/p", Kp),
+				SmartDashboard.getNumber("PID Controller Turn/i", Ki), 
+				SmartDashboard.getNumber("PID Controller Turn/d", Kd));
 		SmartDashboard.putNumber("Gyro", Chassis.getInstance().getAngle());
-    }
+		SmartDashboard.putNumber("TimesOnTargetTurn", timesOnTarget);
+		SmartDashboard.putData("PID Controller Turn", drivePID);
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
+	}
+
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
 		if (drivePID.onTarget()) {
 			timesOnTarget++;
 		} else {
 			timesOnTarget = 0;
 		}
-		return timesOnTarget > 2;
-    }
+		return timesOnTarget > 5;
+	}
 
-    // Called once after isFinished returns true
-<<<<<<< HEAD
-    protected void end() {}
-=======
-    protected void end() {
-    	Chassis.getInstance().stopMotors();
-    }
->>>>>>> 72a419a4531bab5607ff9944fec1d02363a1b48d
+	protected void end() {
+		Chassis.getInstance().stopMotors();
+		drivePID.disable();
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	end();
-    }
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		end();
+	}
 
 	@Override
 	public void setPIDSourceType(PIDSourceType pidSource) {}
@@ -88,7 +85,7 @@ public class TurnInPlace extends Command implements PIDOutput , PIDSource {
 
 	@Override
 	public void pidWrite(double output) {
-		Chassis.getInstance().arcadeDrive(0,output);		
+		Chassis.getInstance().tankDrive(output, -output);		
 	}
 
 }

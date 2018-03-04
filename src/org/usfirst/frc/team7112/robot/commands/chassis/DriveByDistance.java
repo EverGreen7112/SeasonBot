@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveByDistance extends Command implements PIDOutput , PIDSource {
 
 	private int timesOnTarget=0;
-	private double Kp = 2.4, Ki = 0, Kd = 0;
+	private double Kp = 1.6, Ki = 0.955, Kd = 0.5;
 	private double distance, angle;
 	private PIDController drivePID;
 	private final double P2 = 2.0 / 90.0; //maybe change
@@ -33,7 +33,7 @@ public class DriveByDistance extends Command implements PIDOutput , PIDSource {
 		Chassis.getInstance().resetGyro();
 		Chassis.getInstance().resetEncoders();
     	drivePID.reset();
-		drivePID.setAbsoluteTolerance(0.05);
+		drivePID.setAbsoluteTolerance(0.03);
 		drivePID.setSetpoint(distance);
 		drivePID.setOutputRange(-Chassis.getInstance().getDriveMultiplier(), Chassis.getInstance().getDriveMultiplier());
 		drivePID.enable();
@@ -41,14 +41,14 @@ public class DriveByDistance extends Command implements PIDOutput , PIDSource {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//    	drivePID.setPID(
-//    			SmartDashboard.getNumber("Drive PID P", 0),
-//    			SmartDashboard.getNumber("Drive PID I", 0), 
-//    			SmartDashboard.getNumber("Drive PID D", 0));
-//    	SmartDashboard.putNumber("Drive PID P", drivePID.getP());
-//		SmartDashboard.putNumber("Drive PID I", drivePID.getI());
-//		SmartDashboard.putNumber("Drive PID D", drivePID.getD());
+    	drivePID.setPID(
+    			SmartDashboard.getNumber("PID controller/p", Kp),
+    			SmartDashboard.getNumber("PID controller/i", Ki), 
+    			SmartDashboard.getNumber("PID controller/d", Kd));
+    	drivePID.setSetpoint(SmartDashboard.getNumber("PID controller/setPoint", distance));
 		SmartDashboard.putNumber("Encoder", Chassis.getInstance().getDistance());
+		SmartDashboard.putNumber("TimesOnTarget", timesOnTarget);
+		SmartDashboard.putData("PID controller", drivePID);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -58,12 +58,13 @@ public class DriveByDistance extends Command implements PIDOutput , PIDSource {
 		} else {
 			timesOnTarget = 0;
 		}
-		return timesOnTarget > 2;
+		return timesOnTarget > 15;
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	Chassis.getInstance().stopMotors();
+    	drivePID.disable();
     }
 
     // Called when another command which requires one or more of the same

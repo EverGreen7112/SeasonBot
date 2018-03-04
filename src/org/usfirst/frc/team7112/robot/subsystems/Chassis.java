@@ -53,7 +53,7 @@ public class Chassis extends Subsystem {
 	private static final double kFastDriveMultiplier = 0.8;
 	private static double driveMultiplier;
 	
-	private static final double kDistancePerPulse = 0.0022307;
+	private static final double kDistancePerPulse = 0.00446809;
 
 	private Chassis() {
 		//encoders
@@ -76,7 +76,7 @@ public class Chassis extends Subsystem {
 		leftMotors = new SpeedControllerGroup(talon_FrontLeft, talon_BackLeft);
 		rightMotors = new SpeedControllerGroup(talon_FrontRight, talon_BackRight);
 		Driver = new DifferentialDrive(leftMotors, rightMotors);
-		driveMultiplier = 0.6;
+		driveMultiplier = 0.7;
 	}
 	
 	/**
@@ -141,7 +141,7 @@ public class Chassis extends Subsystem {
 	 * @returns the angle that the robot's at
 	 */
 	public double getAngle() {
-		return gyro.getAngle();
+		return gyro.getAngle()*5.86;
 	}
 	
 	
@@ -157,13 +157,10 @@ public class Chassis extends Subsystem {
 		gyro.reset();
 	}
 	
-<<<<<<< HEAD
-	//Chances drive's perspective, now BACK is Forward and the opposite
-=======
+
 	/**
 	 * Inverts the perspective point of the robot, and while driving towards the flat side of the robot the drive multiplier is lower.
 	 */
->>>>>>> 72a419a4531bab5607ff9944fec1d02363a1b48d
 	public void switchPerspectives(){
 		leftMotors.setInverted(!leftMotors.getInverted());
 		rightMotors.setInverted(!rightMotors.getInverted());

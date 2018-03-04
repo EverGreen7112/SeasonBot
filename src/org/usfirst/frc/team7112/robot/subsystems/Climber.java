@@ -19,7 +19,7 @@ public class Climber extends Subsystem {
 		private SpeedController tapeMotor;
 		private SpeedController ropeFrontMotor;
 		private SpeedController ropeBackMotor;
-		private final double ropePowerModifier = 0.7, tapePowerModifierOpen = 0.8, tapePowerModifierClose = 0.75;
+		private final double ropePowerModifier = 0.85, tapePowerModifierOpen = 0.75, tapePowerModifierClose = 0.65;
 	
 		private Climber(){
 			//-----------sparks---------//

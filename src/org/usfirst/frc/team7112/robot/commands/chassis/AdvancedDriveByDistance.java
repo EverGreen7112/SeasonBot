@@ -8,14 +8,10 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-<<<<<<< HEAD
-public class AdvancedDriveByDistance extends Command implements PIDOutput , PIDSource {
-=======
 /**
  *
  */
 public class AdvancedDriveByDistance extends Command implements PIDSource {
->>>>>>> 72a419a4531bab5607ff9944fec1d02363a1b48d
 
 	private int timesOnTarget=0;
 	private double Kp = 1, Ki = 0.3, Kd = 0; //for left motors
@@ -89,13 +85,11 @@ public class AdvancedDriveByDistance extends Command implements PIDSource {
 		SmartDashboard.putNumber("Drive Right PID D", drivePIDRight.getD());
 		SmartDashboard.putNumber("EncoderRight", Chassis.getInstance().getDistanceR());
 		
-<<<<<<< HEAD
-=======
+
 		currentError = drivePIDLeft.getSetpoint() - Chassis.getInstance().getDistance();
 		xDot = (currentError - errorBefore) / deltaTime;
 		u = xDot / radius;
 		errorBefore = currentError; 
->>>>>>> 72a419a4531bab5607ff9944fec1d02363a1b48d
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -109,14 +103,9 @@ public class AdvancedDriveByDistance extends Command implements PIDSource {
 	}
 
 	// Called once after isFinished returns true
-<<<<<<< HEAD
-	protected void end() {}
-=======
 	protected void end() {
 		Chassis.getInstance().stopMotors();
 	}
->>>>>>> 72a419a4531bab5607ff9944fec1d02363a1b48d
-
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
@@ -135,10 +124,4 @@ public class AdvancedDriveByDistance extends Command implements PIDSource {
 	public double pidGet() {
 		return Chassis.getInstance().getDistance();
 	}
-
-<<<<<<< HEAD
-	@Override
-	public void pidWrite(double output) {}
-=======
->>>>>>> 72a419a4531bab5607ff9944fec1d02363a1b48d
 }

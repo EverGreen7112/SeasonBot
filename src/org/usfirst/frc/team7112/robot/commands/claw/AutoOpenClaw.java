@@ -15,13 +15,13 @@ public class AutoOpenClaw extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(!Claw.getInstance().switchPressed_Open())
+    	if(Claw.getInstance().switchPressed_Open())
     		Claw.getInstance().setMotorPower(Claw.getInstance().getSpeedmodifier());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Claw.getInstance().switchPressed_Open();
+        return !Claw.getInstance().switchPressed_Open();
     }
 
     // Called once after isFinished returns true

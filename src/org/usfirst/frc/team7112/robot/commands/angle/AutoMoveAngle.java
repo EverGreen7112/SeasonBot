@@ -13,7 +13,7 @@ public class AutoMoveAngle extends Command {
 	private boolean direction; 
     public AutoMoveAngle(int angle) {
     	requires(Angle.getInstance());
-    	goalAngle = angle;
+    	goalAngle = -angle;
     }
 
     // Called just before this Command runs the first time
@@ -38,7 +38,7 @@ public class AutoMoveAngle extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Angle.getInstance().getCurrentAngle() >= Math.abs(goalAngle);
+        return Math.abs(Angle.getInstance().getCurrentAngle()) >= Math.abs(goalAngle);
     }
 
     // Called once after isFinished returns true
@@ -48,6 +48,6 @@ public class AutoMoveAngle extends Command {
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    protected void interrupted() {}
+    protected void interrupted() {end();}
 
 }
